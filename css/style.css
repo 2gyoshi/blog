@@ -48,7 +48,11 @@ p {
     margin-inline-end: 0px;
 }
 
-.navi, .article, .silde, .footer {
+.header {
+    padding: 0 25px;
+}
+
+.navi, .main, .silde, .footer {
     padding: 25px;
 }
 
@@ -56,20 +60,26 @@ p {
 .header {
     width: 100%;
     height: 50px;
-    display: flex;
-    align-items: center;
+    color: #ffffff;
+    background: #1a1b0e;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1;
-
-    color: #ffffff;
-    background: #3E3E3E;
+    z-index: 2;
 }   
 
-.header-title {
-    font-size: 3rem;
+.header > .container{
+    width: 100%;
+    max-width: 540px;
+    height: 100%;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    display: inline-block;
+    font-size: 3rem;
 }
 
 .header-navi {
@@ -93,50 +103,53 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    top: 0;
-    right: 0;
+    margin-left: auto;
     cursor: pointer;
     z-index: 2;
-
-    color: #ffffff;
-    background: #1a1b0e;
 }
 
 /* ナビ */
 .navi {
     width: 100%;
     height: 100%;
-    display: none;
+    font-size: 1.8rem;
     position: fixed;
     top: 50px;
     z-index: 1;
-
-    background: #cccccc;
+    transform: translateY(calc(-100% - 50px));
+    transition: transform .2s ease;
+    
+    color: #ffffff;
+    background: #1a1b0e;
 }
 
 .navi > li {
-    border: 1px solid #ffffff;
-    background: #cccccc;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
 }
 
 #drawer-checkbox:checked ~ .navi {
+    transform: translateY(0);
     display: block;
 }
 
 /* メイン */
 .main {
     width: 100%;
-    max-width: 860px;
     position: relative;
     top: 50px;
     left: 0;
+    background: #ffffff;
 }
 
 .article {
     width: 100%;
     height: auto;
+    max-width: 540px;
     background: #ffffff;
+    margin: 0 auto;
 }
 
 /* 記事ヘッダー */
@@ -208,27 +221,28 @@ p {
 
     color: #ffffff;
     background: #3E3E3E;
+    background: #1a1b0e;
 }
 
 /* 480pxから */
 @media (min-width: 480px) {
-    .navi {
-        width: 50%;
-        height: 100%;
-        display: none;
+    /* .navi {
+        width: 100%;
+        height: 0;
         position: fixed;
         top: 50px;
-        right: -50%;
+        transition: all .2s ease-out;
     }
     
     #drawer-checkbox:checked ~ .navi {
-        right: 0;
-        display: block;
-    }
+        position: fixed;
+        top: 50px;
+        height: 100vh;
+    } */
 }
 
 /* 770pxから */
-@media (min-width: 770px) {
+@media (min-width: 768px) {
     .navi, .main, .article, .silde, .footer {
         padding: 16px;
     }
@@ -236,6 +250,11 @@ p {
     .header {
         position: absolute;
         padding: 0 16px;
+        margin: 0;
+    }
+    .header > .container {
+        max-width: initial;
+        margin: 0;
     }
 
     .header-title {
@@ -261,6 +280,12 @@ p {
 
     .main {
         width: 70%;
+        background: #F6F6F4;
+    }
+
+    .article {
+        margin: 0;
+        max-width: initial;
     }
 
     .side {
