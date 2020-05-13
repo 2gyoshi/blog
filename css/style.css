@@ -20,6 +20,7 @@ body {
     height: 100%;
     font-size: 1.4rem;
     font-family: '游ゴシック体', 'Yu Gothic', YuGothic, sans-serif;
+    background: #F6F6F4;
 }
 
 h1 {
@@ -57,7 +58,7 @@ p {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 1;
 
     color: #ffffff;
     background: #3E3E3E;
@@ -66,6 +67,18 @@ p {
 .header-title {
     font-size: 3rem;
     margin: 0 auto;
+}
+
+.header-navi {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.header-navi > li{
+    margin: 1em;
 }
 
 .menu-btn {
@@ -78,20 +91,10 @@ p {
     top: 0;
     right: 0;
     cursor: pointer;
-    z-index: 3;
+    z-index: 2;
 
     color: #ffffff;
     background: #1a1b0e;
-}
-
-/* メイン */
-.main {
-    width: 100%;
-    padding: 24px;
-    position: relative;
-    top: 50px;
-
-    background: #ffffff;
 }
 
 /* ナビ */
@@ -104,16 +107,28 @@ p {
     top: 50px;
     z-index: 1;
     
-    border-right: 1px solid #E1E4E8;
+}
+
+.navi > li {
+    background: #cccccc;
 }
 
 #drawer-checkbox:checked ~ .navi {
     display: block;
 }
 
+/* メイン */
+.main {
+    width: 100%;
+    position: relative;
+    top: 50px;
+}
+
 .article {
     width: 100%;
     height: auto;
+    padding: 24px;
+    background: #ffffff;
 }
 
 /* 記事ヘッダー */
@@ -172,10 +187,15 @@ p {
     padding-bottom: 0.1em;
 }
 
+/* サイドバー */
+.side-bar {
+    display: none;
+}
+
+
 /* フッター */
 .footer {
     width: 100%;
-    background: #CCCCCC;
     position: relative;
     bottom: -50px; /* ヘッダー分マイナス */
     padding: 24px;
@@ -194,18 +214,29 @@ p {
         display: none;
         position: fixed;
         top: 50px;
-        right: 0;
+        right: -30%;
     }
     
     #drawer-checkbox:checked ~ .navi {
+        right: 0;
         display: block;
     }
 }
 
 /* 770pxから */
 @media (min-width: 770px) {
+    .header {
+        position: absolute;
+    }
+
     .header-title {
         margin: 0;
+    }
+
+    .header-navi {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
     }
 
     .menu-btn {
@@ -216,23 +247,30 @@ p {
         width: 70%;
         position: relative;
         top: 50px;
-        left: 30%;
+        left: 0;
+        padding: 24px;
     }
 
-    .navi {
+    .article {
+        padding: 16px;
+    }
+
+
+    .side-bar {
         width: 30%;
-        height: 100%;
-        display: block;
-        position: fixed;
+        position: absolute;
         top: 50px;
-        left: 0;
+        left: 70%;
+        display: block;
+        background: #F6F6F4;
+        padding: 24px;
     }
 
     .footer {
-        width: 70%;
+        width: 100%;
         position: relative;
-        left: 30%;
         bottom: -50px; /* ヘッダー分マイナス */
+        z-index: 1;
     }
 }
 
