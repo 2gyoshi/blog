@@ -1,0 +1,36 @@
+﻿* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.adjust-box {
+    position: relative;
+    width: 50%;
+    height: auto;
+    min-height: 400px;
+    background: #EEEEEEEE;
+    margin: 10px;
+}
+
+.adjust-box::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.inner {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.adjust-box p {
+    line-height:1.5em;
+}
+
+.word-wrap {
+    word-wrap: break-word;
+}

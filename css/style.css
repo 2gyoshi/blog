@@ -1,0 +1,244 @@
+﻿* {
+	padding: 0;
+    margin: 0;
+    font-size: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font-size:  62.5%;
+    letter-spacing: 0.03em;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    font-size: 1.4rem;
+    font-family: '游ゴシック体', 'Yu Gothic', YuGothic, sans-serif;
+}
+
+h1 {
+    font-size: 1.8em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+    cursor: pointer;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+/* ヘッダー */
+.header {
+    width: 100%;
+    height: 50px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    color: #ffffff;
+    background: #3E3E3E;
+}   
+
+.header-title {
+    font-size: 3rem;
+    margin: 0 auto;
+}
+
+.menu-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    z-index: 3;
+
+    color: #ffffff;
+    background: #1a1b0e;
+}
+
+/* メイン */
+.main {
+    width: 100%;
+    padding: 24px;
+    position: relative;
+    top: 50px;
+
+    background: #ffffff;
+}
+
+/* ナビ */
+.navi {
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+    display: none;
+    position: fixed;
+    top: 50px;
+    z-index: 1;
+    
+    border-right: 1px solid #E1E4E8;
+}
+
+#drawer-checkbox:checked ~ .navi {
+    display: block;
+}
+
+.article {
+    width: 100%;
+    height: auto;
+}
+
+/* 記事ヘッダー */
+.article-header {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.article-title {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.article-info {
+    color: #ACACAC;
+    margin-bottom: 10px;
+}
+
+.article-tags {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag:not(:last-child) {
+    margin-right: 8px;
+}
+
+.tag {
+    color: #666666;
+    background: #ACACAC;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    padding: 2px 8px;
+}
+
+/* 記事内容 */
+.article-content {
+    width: 100%;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+    font-weight: bold;
+    line-height: 1.5;
+    font-feature-settings: "palt";
+    margin-top: 2.2em;
+    margin-bottom: 2.4rem;
+    cursor: pointer;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.1em;
+}
+
+/* フッター */
+.footer {
+    width: 100%;
+    background: #CCCCCC;
+    position: relative;
+    bottom: -50px; /* ヘッダー分マイナス */
+    padding: 24px;
+
+    color: #ffffff;
+    background: #3E3E3E;
+}
+
+
+
+/* 480pxから */
+@media (min-width: 480px) {
+    .navi {
+        width: 30%;
+        height: 100%;
+        display: none;
+        position: fixed;
+        top: 50px;
+        right: 0;
+    }
+    
+    #drawer-checkbox:checked ~ .navi {
+        display: block;
+    }
+}
+
+/* 770pxから */
+@media (min-width: 770px) {
+    .header-title {
+        margin: 0;
+    }
+
+    .menu-btn {
+        display: none;
+    }
+
+    .main {
+        width: 70%;
+        position: relative;
+        top: 50px;
+        left: 30%;
+    }
+
+    .navi {
+        width: 30%;
+        height: 100%;
+        display: block;
+        position: fixed;
+        top: 50px;
+        left: 0;
+    }
+
+    .footer {
+        width: 70%;
+        position: relative;
+        left: 30%;
+        bottom: -50px; /* ヘッダー分マイナス */
+    }
+}
+
+@media (max-width: 991px) {
+}
+
+/* 1200pxまで */
+@media (max-width: 1200px) {
+}
