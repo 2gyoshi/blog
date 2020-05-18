@@ -51,7 +51,6 @@
   left: 0;
   bottom: 100%;
   transition: all .3s ease;
-  color: #ffffff;
   background: #1a1b0e;
 }
 
@@ -64,6 +63,10 @@
   font-size: 1.8rem;
   align-items: center;
   cursor: pointer;
+}
+
+.global-navi__list li a {
+  color: #ffffff;
 }
 
 /* 480pxから */
