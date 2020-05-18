@@ -2,7 +2,7 @@
 .global-header {
   width: 100%;
   height: 50px;
-  padding: 0 25px;
+  padding: 0 12px;
   position: fixed;
   top: 0;
   left: 0;
@@ -22,6 +22,10 @@
 
 .global-header__title {
   display: inline-block;
+}
+
+.global-header__title a {
+  color: #ffffff;
 }
 
 .global-header__label {

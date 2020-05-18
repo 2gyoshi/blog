@@ -1,4 +1,13 @@
 @charset "UTF-8";
+.index-main {
+  width: 100%;
+  height: 500px;
+  position: absolute;
+  top: 50px;
+  left: 0;
+  background-color: #cccccc;
+}
+
 /* 480pxから */
 /* 770pxから */
 /* 1025pxから */
