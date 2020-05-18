@@ -7,7 +7,7 @@
   top: 0;
   left: 0;
   color: #ffffff;
-  background: #1a1b0e;
+  background-color: #1a1b0e;
   z-index: 2;
 }
 
@@ -22,40 +22,60 @@
 
 .global-header__title {
   display: inline-block;
-}
-
-.global-header__title a {
   color: #ffffff;
 }
 
-.global-header__label {
+.global-navi {
+  margin-left: auto;
+}
+
+.global-navi__label {
   width: 50px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  margin-left: auto;
   z-index: 3;
+  cursor: pointer;
 }
 
-.global-header__checkbox {
+.global-navi__icon, .global-navi__icon:before, .global-navi__icon:after {
+  width: 25px;
+  height: 3px;
+  border-radius: 3px;
+  background: #ffffff;
+  display: block;
+  position: absolute;
+  content: '';
+  cursor: pointer;
+}
+
+.global-navi__icon::before {
+  top: -8px;
+}
+
+.global-navi__icon::after {
+  top: 8px;
+}
+
+.global-navi__checkbox {
   display: none;
 }
 
-.global-header__checkbox:checked ~ .global-navi {
-  bottom: -50px;
+.global-navi__checkbox:checked ~ .global-navi__list {
+  right: 0;
 }
 
-.global-navi {
+.global-navi__list {
   width: 100%;
   height: 100%;
-  padding: 25px;
+  padding: 12px;
   position: fixed;
-  left: 0;
-  bottom: 100%;
-  transition: all .3s ease;
-  background: #1a1b0e;
+  top: 50px;
+  right: -100%;
+  transition: right .2s ease;
+  background-color: #1a1b0e;
+  z-index: 1;
 }
 
 .global-navi__list li {
@@ -67,28 +87,30 @@
   font-size: 1.8rem;
   align-items: center;
   cursor: pointer;
-}
-
-.global-navi__list li a {
   color: #ffffff;
 }
 
 /* 480pxから */
 /* 770pxから */
 @media (min-width: 768px) {
-  .global-header__label {
-    display: none;
+  .global-header {
+    position: absolute;
   }
   .global-navi {
     width: auto;
-    height: 50px;
-    padding: 0;
-    position: relative;
-    top: 0;
     margin-left: auto;
+    padding: 0;
+  }
+  .global-navi__label {
+    display: none;
   }
   .global-navi__list {
+    width: auto;
     display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0;
   }
   .global-navi__list li {
     display: flex;

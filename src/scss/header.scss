@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     color: #ffffff;
-    background: #1a1b0e;
+    background-color: #1a1b0e;
     z-index: 2;
 
     &__container{
@@ -20,42 +20,61 @@
 
     &__title {
         display: inline-block;
-        a {
-            color: #ffffff;
-        }
+        color: #ffffff;
     }
+}
 
+.global-navi {
+    margin-left: auto;
+ 
     &__label {
         width: 50px;
         height: 50px;
         display: flex;
         justify-content: center;
         align-items: center;
-        cursor: pointer;
-        margin-left: auto;
         z-index: 3;
+        cursor: pointer;
+    }
+
+    &__icon, &__icon:before, &__icon:after {
+        width: 25px;
+        height: 3px;
+        border-radius: 3px;
+        background: #ffffff;
+        display: block;
+        position: absolute;
+        content: '';
+        cursor: pointer;
+    }
+    
+    &__icon::before {
+        top: -8px;
+    }
+    
+    &__icon::after {
+        top: 8px;
     }
     
     &__checkbox {
         display: none;
     }
     
-    &__checkbox:checked ~ .global-navi {
-        bottom: -50px;
+    &__checkbox:checked ~ &__list {
+        right: 0;
     }
-}
 
-.global-navi {
-    width: 100%;
-    height: 100%;
-    padding: 25px;
-    position: fixed;
-    left: 0;
-    bottom: 100%;
-    transition: all .3s ease;
-    background: #1a1b0e;
- 
     &__list {
+        width: 100%;
+        height: 100%;
+        padding: 12px;
+        position: fixed;
+        top: 50px;
+        right: -100%;
+        transition: right .2s ease;
+        background-color: #1a1b0e;
+        z-index: 1;
+        
         li {
             list-style: none;
             width: 100%;
@@ -65,11 +84,7 @@
             font-size: 1.8rem;
             align-items: center;
             cursor: pointer;
-
-            a{
-                color: #ffffff;
-
-            }
+            color: #ffffff;
         }
     }
 }
@@ -81,20 +96,26 @@
 /* 770pxから */
 @media (min-width: 768px) {
     .global-header {
+        position: absolute;
+    }
+
+    .global-navi {
+        width: auto;
+        margin-left: auto;
+        padding: 0;
+
         &__label {
             display: none;
         }
-    }
-    
-    .global-navi {
-        width: auto;
-        height: 50px;
-        padding: 0;
-        position: relative;
-        top: 0;
-        margin-left: auto;
+
         &__list {
+            width: auto;
             display: flex;
+            position: relative;
+            top: 0;
+            left: 0;
+            padding: 0;
+
             li {
                 display: flex;
                 align-items: center;
