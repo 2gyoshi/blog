@@ -44,5 +44,4 @@ window.onload = async function(){
     const blog = new Blog();
     await blog.getArticleData();
     await blog.setArticleData();
-    
 }
