@@ -14,12 +14,16 @@ class Blog {
         articles.forEach(e => {
             let html = 
             `<div class="article">
-                <h2 class="article__title">
+                <h2 class="article-title">
                     <a href="./article.html">${e.title}</a>
                 </h2>
-                <div class="article__cotent">
+                <div class="article-content">
                     ${this.renderImg(e.image)}
-                    <p class="article__text">${e.text}</p>
+                    <p class="article-content__text">${e.text}</p>
+                </div>
+                <div class="article-fotter">
+                    <div class="article-fotter__comment">Comment</div>
+                    <time class="article-fotter__published">March 6th, 2020</time>
                 </div>
             </div>`;
             target.insertAdjacentHTML('beforeend', html);
@@ -28,14 +32,11 @@ class Blog {
 
     renderImg(images) {
         const path = '/dev/blog/pub/img/';
-        let html = '<div class="article__image">';
-
+        let html = '';
         images.forEach(e => {
             // TODO: alt属性をつける
-            html += `<img src="${path + e}" alt="test"></img>`;
+            html += `<img class="article-content__image" src="${path + e}" alt="test"></img>`;
         });
-
-        html += '</div>';
         return html;
     }
 }

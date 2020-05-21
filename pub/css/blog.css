@@ -23,24 +23,50 @@
   word-wrap: break-word;
 }
 
-.article__title {
+.article-title {
   font-size: 2rem;
   font-weight: 600;
   color: #12263f;
-  margin-bottom: .5rem;
+  margin-bottom: 2rem;
 }
 
-.article__cotent {
+.article-content {
   width: 100%;
+  margin-bottom: 2rem;
 }
 
-.article__image {
+.article-content__image {
   width: 100%;
-  margin-bottom: .5rem;
+  margin-bottom: 12px;
+  border-radius: .5rem;
 }
 
-.article__image img {
+.article-content__image:last-child {
+  margin-bottom: 2rem;
+}
+
+.article-content__text {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.article-content__text:last-child {
+  margin-bottom: 0;
+}
+
+.article-fotter {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 90%;
+}
+
+.article-fotter__comment {
+  color: #95aac9;
+}
+
+.article-fotter__published {
+  color: #95aac9;
 }
 
 .global-footer {
@@ -58,5 +84,5 @@
 }
 
 /* 480pxから */
-/* 770pxから */
+/* 768pxから */
 /* 1025pxから */

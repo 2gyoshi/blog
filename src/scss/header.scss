@@ -134,6 +134,9 @@
 @media (min-width: 768px) {
     .global-header {
         position: absolute;
+        &__container{
+            max-width: 720px;
+        }
     }
 
     .global-navi {
@@ -164,8 +167,10 @@
 }
 
 /* 1025pxから */
-@media (min-width: 1025px) {
-    .header{
-        padding: 0 50px;
+@media (min-width: 1000px) {
+    .global-header {
+        &__container{
+            max-width: 960px;
+        }
     }
 }

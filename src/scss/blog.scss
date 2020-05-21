@@ -20,29 +20,49 @@
     -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
     box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
     word-wrap: break-word;
-
-    &__title {
-        font-size: 2rem;
-        font-weight: 600;
-        color: #12263f;
-        margin-bottom: .5rem;
-    }
-    
-    &__cotent {
-        width: 100%;
-    }
-
-    &__image {
-        width: 100%;
-        margin-bottom: .5rem;
-    }
-    
-    &__image img {
-        width: 100%;
-    }
-    
 }
 
+.article-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #12263f;
+    margin-bottom: 2rem;
+}
+
+.article-content {
+    width: 100%;
+    margin-bottom: 2rem;
+   
+    &__image {
+        width: 100%;
+        margin-bottom: 12px;
+        border-radius: .5rem;
+        &:last-child {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__text {
+        margin-top: 0;
+        margin-bottom: 1rem;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.article-fotter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 90%;
+    &__comment {
+        color: #95aac9;
+    }
+    &__published {
+        color: #95aac9;
+    }
+}
 
 .global-footer {
     width: 100%;
@@ -58,13 +78,11 @@
     }
 }
 
-
-
 /* 480pxから */
 @media (min-width: 480px) {
 }
 
-/* 770pxから */
+/* 768pxから */
 @media (min-width: 768px) {
 }
 
