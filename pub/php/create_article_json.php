@@ -26,14 +26,14 @@ class Article {
 	public int $id = 0;
 	public string $title = "no title";
 	public string $text = "";
-	public array $image = array();
+	public array $images = array();
 	public string $time = "";
 
 	function __construct($id, $title, $text, $image, $time) {
 		$this->id = $id;
 		$this->title = $title;
 		$this->text = $text;
-		array_push($this->image, $image);
+		array_push($this->images, $image);
 		$this->time = $time;
 	}
 
@@ -42,7 +42,7 @@ class Article {
 	}
 
 	public function pushImage($image) {
-		array_push($this->image, $image);
+		array_push($this->images, $image);
 	}
 }
 
