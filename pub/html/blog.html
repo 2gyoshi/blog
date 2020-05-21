@@ -9,7 +9,7 @@
     <link href="/dev/blog/pub/css/footer.css" rel="stylesheet" />
     <link href="/dev/blog/pub/css/blog.css" rel="stylesheet" />
 </head>
-<body>
+<body class="blog-body">
     <header class="global-header">
         <div class="global-header__container">
             <h1 class="global-header__title"><a href="/dev/blog/pub/html/index.html">asobiba</a></h1>
@@ -29,23 +29,33 @@
             </nav>
         </div>
     </header>
-    <main class="blog-main">
-        <div class="article">
-            <h2 class="article-title">
-                <a href="./article.html">test1</a>
-            </h2>
-            <div class="article-content">
-                <img class="article-content__image" src="/dev/blog/pub/img/sample1.jpeg">
-                <p class="article-content__text">hogehogehogehogehogehogehogehogehogehoge</p>
-                <p class="article-content__text">hogehogehogehogehogehogehogehogehogehoge</p>
-                <p class="article-content__text">hogehogehogehogehogehogehogehogehogehoge</p>
-            </div>
-            <div class="article-fotter">
-                <div class="article-fotter__comment">Comment</div>
-                <time class="article-fotter__published">March 6th, 2020</time>
-            </div>
+    <div class="blog-container">
+        <div class="row">
+            <aside class="blog-aside">
+                <div class="card">
+                    col1
+                </div>
+            </aside>
+            <main class="blog-main">
+                <article class="card">
+                    <h2 class="card-header">
+                        <a href="./article.html">test1</a>
+                    </h2>
+                    <div class="card-content">
+                        <img class="card-content__image" src="/dev/blog/pub/img/sample1.jpeg">
+                        <p class="card-content__text">hogehogehogehogehogehogehogehogehogehoge</p>
+                        <p class="card-content__text">hogehogehogehogehogehogehogehogehogehoge</p>
+                        <p class="card-content__text">hogehogehogehogehogehogehogehogehogehoge</p>
+                    </div>
+                    <div class="card-fotter">
+                        <div class="card-fotter__comment">Comment</div>
+                        <time class="card-fotter__published">March 6th, 2020</time>
+                    </div>
+                </article>
+            </main>
         </div>
-    </main>
+    </div>
+   
     <footer class="global-footer">
         <div class="footer-container">
             <span class="nomeaning" title="It doesn't really mean anything">I like cake!</span>

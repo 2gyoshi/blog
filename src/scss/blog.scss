@@ -1,17 +1,32 @@
-.blog-main {
-    width: 100%;
-    padding: 24px 12px;
+.blog-body {
     background-color: #F9FBFD;
-    position: relative;
-    top: 50px;
-    left: 0;
 }
 
-.article {
+.blog-container {
     width: 100%;
     max-width: 540px;
+    padding: 24px 12px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    top: 50px;
+}
+
+.row {
+    margin-left: -12px;
+    margin-right: -12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.blog-aside, .blog-main {
+    width: 100%;
+    max-width: 540px;
+    padding: 0 12px;
+}
+
+.card {
+    width: 100%;
     margin-bottom: 1.5rem;
     padding: 24px;
     background-color: #ffffff;
@@ -22,14 +37,14 @@
     word-wrap: break-word;
 }
 
-.article-title {
+.card-header {
     font-size: 2rem;
     font-weight: 600;
     color: #12263f;
     margin-bottom: 2rem;
 }
 
-.article-content {
+.card-content {
     width: 100%;
     margin-bottom: 2rem;
    
@@ -51,17 +66,12 @@
     }
 }
 
-.article-fotter {
+.card-fotter {
     width: 100%;
+    color: #95aac9;
     display: flex;
     justify-content: space-between;
     font-size: 90%;
-    &__comment {
-        color: #95aac9;
-    }
-    &__published {
-        color: #95aac9;
-    }
 }
 
 /* 480pxから */
@@ -70,8 +80,30 @@
 
 /* 768pxから */
 @media (min-width: 768px) {
+    .blog-container {
+        max-width: 720px;
+    }
+    .blog-aside {
+        max-width: 30%;
+        order: 1;
+    }
+    .blog-main {
+        max-width: 70%;
+        order: 0;
+    }
 }
 
 /* 1025pxから */
-@media (min-width: 1025px) {
+@media (min-width: 1000px) {
+    .blog-container {
+        max-width: 960px;
+    }
+    .blog-aside {
+        max-width: 25%;
+        order: 1;
+    }
+    .blog-main {
+        max-width: 75%;
+        order: 0;
+    }
 }

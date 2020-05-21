@@ -13,19 +13,19 @@ class Blog {
         const target = document.querySelector('.blog-main');
         articles.forEach(e => {
             let html = 
-            `<div class="article">
-                <h2 class="article-title">
+            `<article class="card">
+                <h2 class="card-header">
                     <a href="./article.html">${e.title}</a>
                 </h2>
-                <div class="article-content">
+                <div class="card-content">
                     ${this.renderImg(e.image)}
-                    <p class="article-content__text">${e.text}</p>
+                    <p class="card-content__text">${e.text}</p>
                 </div>
-                <div class="article-fotter">
-                    <div class="article-fotter__comment">Comment</div>
-                    <time class="article-fotter__published">March 6th, 2020</time>
+                <div class="card-fotter">
+                    <div class="card-fotter__comment">Comment</div>
+                    <time class="card-fotter__published">March 21th, 2020</time>
                 </div>
-            </div>`;
+            </article>`;
             target.insertAdjacentHTML('beforeend', html);
         });
     }
@@ -35,7 +35,7 @@ class Blog {
         let html = '';
         images.forEach(e => {
             // TODO: alt属性をつける
-            html += `<img class="article-content__image" src="${path + e}" alt="test"></img>`;
+            html += `<img class="card-content__image" src="${path + e}" alt="test"></img>`;
         });
         return html;
     }
