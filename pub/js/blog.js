@@ -89,8 +89,6 @@ class Blog {
                 <div class="card-content">
                     ${this.getTagHTML(json)}
                 </div>
-                <div class="card-fotter">
-                </div>
             </div>`;
         
         target.insertAdjacentHTML('beforeend', html);

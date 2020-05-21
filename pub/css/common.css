@@ -33,3 +33,7 @@ p {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
+img {
+  margin: 0;
+}

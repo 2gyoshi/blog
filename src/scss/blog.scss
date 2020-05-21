@@ -27,7 +27,7 @@
 
 .card {
     width: 100%;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
     padding: 24px;
     background-color: #ffffff;
     border: 1px solid #edf2f9;
@@ -52,23 +52,16 @@
 
 .card-content {
     width: 100%;
-    margin-bottom: 2rem;
    
     &__image {
         width: 100%;
         margin-bottom: 12px;
         border-radius: .5rem;
-        &:last-child {
-            margin-bottom: 2rem;
-        }
     }
 
     &__text {
         margin-top: 0;
         margin-bottom: 1rem;
-        &:last-child {
-            margin-bottom: 0;
-        }
     }
 
     &__tag {
@@ -86,6 +79,7 @@
 
 .card-fotter {
     width: 100%;
+    margin-top: 2rem;
     color: #95aac9;
     display: flex;
     justify-content: space-between;
