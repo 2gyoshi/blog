@@ -42,6 +42,12 @@
     font-weight: 600;
     color: #12263f;
     margin-bottom: 2rem;
+
+    &__title {
+        &--aside {
+            font-size: 1.4rem;
+        }
+    }
 }
 
 .card-content {
@@ -63,6 +69,14 @@
         &:last-child {
             margin-bottom: 0;
         }
+    }
+
+    &__tag {
+        font-size: 1.2rem;
+        color: #6e84a3;
+        background-color: #e2e6ed;
+        border-radius: .5rem;
+        padding: .5em;
     }
 }
 

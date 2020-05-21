@@ -45,6 +45,10 @@
   margin-bottom: 2rem;
 }
 
+.card-header__title--aside {
+  font-size: 1.4rem;
+}
+
 .card-content {
   width: 100%;
   margin-bottom: 2rem;
@@ -67,6 +71,14 @@
 
 .card-content__text:last-child {
   margin-bottom: 0;
+}
+
+.card-content__tag {
+  font-size: 1.2rem;
+  color: #6e84a3;
+  background-color: #e2e6ed;
+  border-radius: .5rem;
+  padding: .5em;
 }
 
 .card-fotter {
