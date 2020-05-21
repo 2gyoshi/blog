@@ -1,6 +1,5 @@
 .global-footer {
     width: 100%;    
-    padding: 12px;
     color: #95aac9;
     background-color: #F9FBFD;
     position: relative;
@@ -9,8 +8,8 @@
 
 .footer-container {
     width: 100%;
-    height: 100%;
     max-width: 540px;
+    padding: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,8 +28,14 @@
 
 /* 768pxから */
 @media (min-width: 768px) {
+    .footer-container {
+        max-width: 720px;
+    }
 }
 
 /* 1025pxから */
-@media (min-width: 1025px) {
+@media (min-width: 1000px) {
+    .footer-container {
+        max-width: 960px;
+    }
 }
