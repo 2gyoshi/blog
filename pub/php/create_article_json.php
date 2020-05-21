@@ -47,10 +47,7 @@ class Article {
 }
 
 function createArticleJson($stmt) {
-	$result = [];
-	
 	try {
-		
 		$list = new ArticleList();
 		
 		while ($row = $stmt->fetch()) {
@@ -77,12 +74,10 @@ function createArticleJson($stmt) {
 
 		}
 		echo json_encode($list);
-
 	}
 	catch(Exception $e) {
 		echo $e->getMessage();
 	}
-	return $result;
 }
 
 ?>

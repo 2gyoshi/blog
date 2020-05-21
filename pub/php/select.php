@@ -1,20 +1,18 @@
 <?php
 
-function selectArticleData(){
+function select($sql){
 	$result = null;
 	$pdo    = null;
 	
 	try {
-		// DBへ接続
+		// DBへ接続する
 		$host = "localhost";
 		$db   = "blog";
 		$user = "root";
 		$pass = "root";
 		$pdo  = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
 	
-		// testテーブルの全データを取得
-		$file = "../sql/select_article_data.sql";
-		$sql = file_get_contents($file);
+		// クエリを実行する
 		$result = $pdo->query($sql);
 	} catch(PDOException $e) {
 		echo $e->getMessage();
