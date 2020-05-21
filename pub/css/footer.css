@@ -1,0 +1,27 @@
+@charset "UTF-8";
+.global-footer {
+  width: 100%;
+  padding: 12px;
+  color: #95aac9;
+  background-color: #F9FBFD;
+  position: relative;
+  top: 50px;
+}
+
+.footer-container {
+  width: 100%;
+  height: 100%;
+  max-width: 540px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.nomeaning {
+  cursor: pointer;
+}
+
+/* 480pxから */
+/* 768pxから */
+/* 1025pxから */
