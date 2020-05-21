@@ -5,7 +5,7 @@ SELECT
     ai.article_image,
     a.update_time
 FROM article_table AS a
-INNER JOIN article_image_table AS ai
+LEFT JOIN article_image_table AS ai
 ON a.article_id = ai.article_id
 WHERE a.is_delete <> 1
 ORDER BY
