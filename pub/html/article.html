@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿<!-- これいる？ -->
+<!DOCTYPE html>
 <html>
 <head>
     <title>asobiba</title>
@@ -7,9 +8,9 @@
     <link href="/dev/blog/pub/css/common.css" rel="stylesheet" />
     <link href="/dev/blog/pub/css/header.css" rel="stylesheet" />
     <link href="/dev/blog/pub/css/footer.css" rel="stylesheet" />
-    <link href="/dev/blog/pub/css/article.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/blog.css" rel="stylesheet" />
 </head>
-<body>
+<body class="blog-body">
     <header class="global-header">
         <div class="global-header__container">
             <h1 class="global-header__title"><a href="/dev/blog/pub/html/index.html">asobiba</a></h1>
@@ -29,82 +30,36 @@
             </nav>
         </div>
     </header>
-    <main class="main">
-        <article class="article">
-            <section class="article-header">
-                <h1 class="article-title">Article Title</h1>
-                <div class="article-info">
-                    <span>最終更新日：</span>
-                    <time datetime="2020/05/11">2020/05/11</time>
+    <div class="blog-container">
+        <div class="row">
+            <aside class="blog-aside">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-header__title--aside">Tags</span>
+                    </div>
+                    <div class="card-content">
+                        <a class="card-content__tag" href="/dev/blog/pub/html/blog/">tag1</a>
+                        <a class="card-content__tag" href="/dev/blog/pub/html/blog/">tag1</a>
+                        <a class="card-content__tag" href="/dev/blog/pub/html/blog/">tag1</a>
+                    </div>
+                    <div class="card-fotter">
+                    </div>
                 </div>
-                <div class="article-tags">
-                    <a class="tag" href="/tag/tag1">
-                        <span>tag1</span>
-                    </a>
-                    <a class="tag" href="/tag/tag2">
-                        <span>tag2</span>
-                    </a>
-                    <a class="tag" href="/tag/tag3">
-                        <span>tag3</span>
-                    </a>
-                </div>
-            </section>
-            <section class="article-content">
-                <h1>雨ニモマケズ</h1>
-                <p>雨ニモマケズ</p>
-                <p>風ニモマケズ</p>
-                <p>雪ニモ夏ノ暑サニモマケヌ</p>
-                <p>丈夫ナカラダヲモチ</p>
-                <p>慾ハナク</p>
-                <p>決シテ瞋ラズ</p>
-                <p>イツモシヅカニワラッテヰル</p>
-                <p>一日ニ玄米四合ト</p>
-                <p>味噌ト少シノ野菜ヲタベ</p>
-                <p>アラユルコトヲ</p>
-                <p>ジブンヲカンジョウニ入レズニ</p>
-                <p>ソシテワスレズ</p>
-                <p>野原ノ松ノ林ノ※(「「蔭」の「陰のつくり」に代えて「人がしら／髟のへん」、第4水準2-86-78)ノ</p>
-                <p>小サナ萓ブキノ小屋ニヰテ</p>
-                <p>東ニ病気ノコドモアレバ</p>
-                <p>行ッテ看病シテヤリ</p>
-                <p>西ニツカレタ母アレバ</p>
-                <p>行ッテソノ稲ノ朿ヲ［＃「朿ヲ」はママ］負ヒ</p>
-                <p>南ニ死ニサウナ人アレバ</p>
-                <p>行ッテコハガラナクテモイヽトイヒ</p>
-                <p>北ニケンクヮヤソショウガアレバ</p>
-                <p>ツマラナイカラヤメロトイヒ</p>
-                <p>ヒドリノトキハナミダヲナガシ</p>
-                <p>サムサノナツハオロオロアルキ</p>
-                <p>ミンナニデクノボートヨバレ</p>
-                <p>ホメラレモセズ</p>
-                <p>クニモサレズ</p>
-                <p>サウイフモノニ</p>
-                <p>ワタシハナリタイ</p>
-                <p>南無無辺行菩薩</p>
-                <p>南無上行菩薩</p>
-                <p>南無多宝如来</p>
-                <p>南無妙法蓮華経</p>
-                <p>南無妙法蓮華経</p>
-                <p>南無釈迦牟尼仏</p>
-                <p>南無浄行菩薩</p>
-                <p>南無安立行菩薩</p>
-            </section>
-            <section class="comment">
-                <div>コメントです</div>
-            </section>
-        </article>
-    </main>
-    <aside>
-        <div class="side">
-            <div class="side-content">サイドバー</div>
+            </aside>
+            <main class="blog-main">
+                <!-- js set html here -->
+            </main>
         </div>
-    <aside>
+    </div>
+   
     <footer class="global-footer">
         <div class="footer-container">
             <span class="nomeaning" title="It doesn't really mean anything">I like cake!</span>
             <span class="nomeaning copywirte" title="It doesn't really mean anything">© asobiba. 2020</span>
         </div>
     </footer>
+    <!-- TODO: バンドルする -->
+    <script src="/dev/blog/pub/js/utility.js"></script>
+    <script src="/dev/blog/pub/js/blog.js"></script>
 </body>
 </html>
-

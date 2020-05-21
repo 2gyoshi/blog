@@ -1,48 +1,90 @@
+// 個別表示と分離するべきかどうか考える
 class Blog {
     constructor() {
         this.json = null;
     }
 
+    // TODO: これいらなくない？
     async getArticleData() {
         const path = '/dev/blog/pub/php/get_article_json.php';
         this.json = await getJson(path);
     }
 
-    async setArticleData() {
-        const articles = this.json.articles;
+
+    async renderArticle() {
         const target = document.querySelector('.blog-main');
-        articles.forEach(e => {
+
+        let data = null;
+
+        data = this.json.articles;
+
+        if(location.search !== '') {
+            const id = Number(location.search.split('=')[1]);
+            data = this.json.articles.filter(e => e.id === id);
+        }
+
+        data.forEach(e => {
             let html = 
             `<article class="card">
-                <h2 class="card-header">
-                    <a href="./article.html">${e.title}</a>
-                </h2>
+                <div class="card-header">
+                    ${this.getTitleHTML(e)}
+                </div>
                 <div class="card-content">
-                    ${this.renderImg(e.image)}
+                    ${this.getImageHTML(e.images)}
                     <p class="card-content__text">${e.text}</p>
                 </div>
                 <div class="card-fotter">
                     <div class="card-fotter__comment">Comment</div>
-                    <time class="card-fotter__published">March 21th, 2020</time>
+                    <time class="card-fotter__update" datetime="${e.time}">
+                        ${e.time}
+                    </time>
                 </div>
             </article>`;
             target.insertAdjacentHTML('beforeend', html);
         });
     }
 
-    renderImg(images) {
-        const path = '/dev/blog/pub/img/';
+    getImageHTML(images) {
         let html = '';
+        if(images[0] === null) return html;
+        const path = '/dev/blog/pub/img/';
         images.forEach(e => {
             // TODO: alt属性をつける
             html += `<img class="card-content__image" src="${path + e}" alt="test"></img>`;
         });
         return html;
     }
+
+    getTitleHTML(e) {
+        let html = '';
+        const path = `/dev/blog/pub/html/article.html`;
+        const cssClass = 'card-header__title';
+        if(location.search === '') {
+            html = `<a class="${cssClass}" href="${path}?id=${e.id}">
+                ${e.title}
+            </a>`;
+        } 
+
+        if(location.search !== '') {
+            html = `<span class="${cssClass}">
+                ${e.title}
+            </span>`;
+        } 
+
+        return html;
+    }
+
+    async renderTags() {
+        const path = '/dev/blog/pub/php/get_tag_json.php';
+        const json = await getJson(path);
+
+    }
 }
 
 window.onload = async function(){
     const blog = new Blog();
     await blog.getArticleData();
-    await blog.setArticleData();
+    await blog.renderArticle();
+
+
 }
