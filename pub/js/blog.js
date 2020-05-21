@@ -24,8 +24,7 @@ class Blog {
         }
 
         data.forEach(e => {
-            let html = 
-            `<article class="card">
+            let html = `<article class="card">
                 <div class="card-header">
                     ${this.getTitleHTML(e)}
                 </div>
@@ -34,7 +33,9 @@ class Blog {
                     <p class="card-content__text">${e.text}</p>
                 </div>
                 <div class="card-fotter">
-                    <div class="card-fotter__comment">Comment</div>
+                    <div class="card-fotter__comment">
+                        Comment
+                    </div>
                     <time class="card-fotter__update" datetime="${e.time}">
                         ${e.time}
                     </time>

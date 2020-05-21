@@ -1,6 +1,6 @@
 <?php
 
-function selectArticleData($id){
+function selectArticleData(){
 	$result = null;
 	$pdo    = null;
 	
