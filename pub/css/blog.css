@@ -74,11 +74,15 @@
 }
 
 .card-content__tag {
+  display: inline-block;
   font-size: 1.2rem;
+  text-align: center;
   color: #6e84a3;
   background-color: #e2e6ed;
-  border-radius: .5rem;
-  padding: .5em;
+  border-radius: .3rem;
+  padding: .2em .5em;
+  margin-right: .5em;
+  margin-bottom: .5em;
 }
 
 .card-fotter {

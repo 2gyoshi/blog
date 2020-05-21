@@ -24,23 +24,24 @@ class Blog {
         }
 
         data.forEach(e => {
-            let html = `<article class="card">
-                <div class="card-header">
-                    ${this.getTitleHTML(e)}
-                </div>
-                <div class="card-content">
-                    ${this.getImageHTML(e.images)}
-                    <p class="card-content__text">${e.text}</p>
-                </div>
-                <div class="card-fotter">
-                    <div class="card-fotter__comment">
-                        Comment
+            let html = 
+                `<article class="card">
+                    <div class="card-header">
+                        ${this.getTitleHTML(e)}
                     </div>
-                    <time class="card-fotter__update" datetime="${e.time}">
-                        ${e.time}
-                    </time>
-                </div>
-            </article>`;
+                    <div class="card-content">
+                        ${this.getImageHTML(e.images)}
+                        <p class="card-content__text">${e.text}</p>
+                    </div>
+                    <div class="card-fotter">
+                        <div class="card-fotter__comment">
+                            Comment
+                        </div>
+                        <time class="card-fotter__update" datetime="${e.time}">
+                            ${e.time}
+                        </time>
+                    </div>
+                </article>`;
             target.insertAdjacentHTML('beforeend', html);
         });
     }
@@ -76,9 +77,40 @@ class Blog {
     }
 
     async renderTags() {
-        const path = '/dev/blog/pub/php/get_tag_json.php';
+        const target = document.querySelector('.blog-aside');
+        const path = '/dev/blog/pub/php/get_tags_json.php';
         const json = await getJson(path);
 
+        let html = 
+            `<div class="card">
+                <div class="card-header">
+                    <span class="card-header__title--aside">Tags</span>
+                </div>
+                <div class="card-content">
+                    ${this.getTagHTML(json)}
+                </div>
+                <div class="card-fotter">
+                </div>
+            </div>`;
+        
+        target.insertAdjacentHTML('beforeend', html);
+
+    }
+
+    getTagHTML(json) {
+        const path = '/dev/blog/pub/html/blog/blog.html';
+        const cssClass = 'card-content__tag';
+
+        let html = '';
+
+        json.items.forEach(e => {
+            html +=
+                `<a class="${cssClass}" href="${path}?tag="${e.value}"">
+                    ${e.value}
+                </a>`;
+        });
+
+        return html;
     }
 }
 
@@ -86,6 +118,7 @@ window.onload = async function(){
     const blog = new Blog();
     await blog.getArticleData();
     await blog.renderArticle();
+    await blog.renderTags();
 
 
 }
