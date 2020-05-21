@@ -3,7 +3,12 @@
 require('./select_article_data.php');
 require('./create_article_json.php');
 
-$stmt = selectArticleData();
-createArticleJson($stmt);
+$id = "";
+if(isset($_GET["id"])) {
+	$id = $_GET["id"];
+}
+
+$data = selectArticleData($id);
+createArticleJson($data);
 
 ?>

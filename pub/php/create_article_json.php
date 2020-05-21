@@ -27,12 +27,14 @@ class Article {
 	public string $title = "no title";
 	public string $text = "";
 	public array $image = array();
+	public string $time = "";
 
-	function __construct($id, $title, $text, $image) {
+	function __construct($id, $title, $text, $image, $time) {
 		$this->id = $id;
 		$this->title = $title;
 		$this->text = $text;
 		array_push($this->image, $image);
+		$this->time = $time;
 	}
 
 	public function getID() {
@@ -49,7 +51,6 @@ function createArticleJson($stmt) {
 	
 	try {
 		
-		$stmt = selectArticleData();
 		$list = new ArticleList();
 		
 		while ($row = $stmt->fetch()) {
@@ -57,18 +58,20 @@ function createArticleJson($stmt) {
 			$titleh = $stmt->getColumnMeta(1)["name"];
 			$texth  = $stmt->getColumnMeta(2)["name"];
 			$imageh = $stmt->getColumnMeta(3)["name"];
+			$timeh  = $stmt->getColumnMeta(4)["name"];
 
 			$id    = (int)$row[$idh];
 			$title = $row[$titleh];
 			$text  = $row[$texth];
 			$image = $row[$imageh];
+			$time  = $row[$timeh];
 
 			$article = $list->getArticle($id);
 			
 			if($article !== null) {
 				$article->pushImage($image);
 			} else {
-				$article = new Article($id, $title, $text, $image);
+				$article = new Article($id, $title, $text, $image, $time);
 				$list->pushArticle($article);
 			}
 

@@ -2,7 +2,8 @@ SELECT
     a.article_id,
     a.article_title,
     a.article_text,
-    ai.article_image
+    ai.article_image,
+    a.update_time
 FROM article_table AS a
 INNER JOIN article_image_table AS ai
 ON a.article_id = ai.article_id

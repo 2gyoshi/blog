@@ -1,9 +1,9 @@
 <?php
 
-function selectArticleData(){
+function selectArticleData($id){
 	$result = null;
 	$pdo    = null;
-
+	
 	try {
 		// DBへ接続
 		$host = "localhost";
@@ -25,6 +25,5 @@ function selectArticleData(){
 
 	return $result;
 }
-selectArticleData();
 
 ?>
