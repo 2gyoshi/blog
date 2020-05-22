@@ -10,13 +10,16 @@
     <link href="/dev/blog/pub/css/login.css" rel="stylesheet" />
 </head>
 <body>
-    <form class="login-form" action="#" method="post">
-        <input type="text" name="id" class="login-form__id">
-        <input type="password" name="pass" class="login-form__pass">
-        <div class="btn-area">
-            <button class="btn-area__btn">login</button>
-            <button class="btn-area__btn--cancel">cancel</button>
-        </div>
-    </form>
+    <div class="login-wrapper">
+        <form class="login-form">
+            <input type="text" id="js-login-id" class="login-form__id">
+            <input type="pass" id="js-login-pass" class="login-form__pass">
+            <button type="button" id="js-login-btn" class="login-form__btn">
+                LOGIN
+            </button>
+        </form>
+    </div>
+    <script src="/dev/blog/pub/js/utility.js"></script>
+    <script src="/dev/blog/pub/js/login.js"></script>
 </body>
 </html>

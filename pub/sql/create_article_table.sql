@@ -32,3 +32,11 @@ CREATE TABLE article_tag_table (
         REFERENCES article_table (article_id)
         ON DELETE RESTRICT ON UPDATE RESTRICT
 );
+
+CREATE TABLE user (
+    id        varchar(20) NOT NULL PRIMARY KEY,
+    password  varchar(20) NOT NULL,
+    create_time datetime,
+    update_time datetime,
+    is_delete   bool
+);
