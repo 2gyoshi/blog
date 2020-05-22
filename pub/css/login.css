@@ -1,0 +1,37 @@
+.login-form {
+  width: 300px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 50px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-form__id, .login-form__pass {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+
+.btn-area {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-area__btn, .btn-area__btn--cancel {
+  width: 45%;
+  height: 30px;
+  display: block;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  outline: none;
+}

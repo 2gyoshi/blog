@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>asobiba</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="/dev/blog/pub/css/ress.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/common.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/header.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/footer.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/regester.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="regester-wrapper">
+        <form class="regester-form" action="/dev/blog/pub/php/regester.php" method="post">
+            <div class="regester-title">
+                <p class="regester-title__name">Title</p>
+                <input type="text" name="title" class="regester-title__input">
+            </div>
+            <div class="regester-image">
+                <p class="regester-image__name">Image</p>
+                <input type="file" name="image" class="regester-image__input"　accept="image/*">
+            </div>
+            <div class="regester-text">
+                <p class="regester-text__name">Text</p>
+                <textarea name="text" class="regester-text__input"></textarea>
+            </div>
+            <div class="regester-tag">
+                <p class="regester-tag__name">Tag</p>
+                <input type="text" name="tag" class="regester-tag__input">
+                <button type="button" class="regester-tag__button">add</button>
+            </div>
+            <div class="regester-btn">
+                <button class="regester-btn__submit">submit</button>
+                <button class="regester-btn__cancel">cancel</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
