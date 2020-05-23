@@ -1,11 +1,12 @@
 <?php
 
 // TODO: とんでもなくコードが汚いので修正する
+$params = json_decode(file_get_contents('php://input'), true);
 
-$title = "'" . $_POST["title"] . "'";
-$image = "'" . $_POST["image"] . "'";
-$text  = "'" . $_POST["text"] . "'";
-$tag   = "'" . $_POST["tag"] . "'";
+$title  = $params["title"];
+$text   = $params["text"];
+$images = $params["images"];
+$tags   = $params["tags"];
 
 $result = null;
 $dbh    = null;
@@ -28,28 +29,26 @@ try {
     // 記事テーブル
     $file = "../sql/insert_article_table.sql";
     $sql = file_get_contents($file);
-    $sql = str_replace("@ARTICLE_TITLE", $title, $sql);
-    $sql = str_replace("@ARTICLE_TEXT", $text, $sql);
+    $sql = str_replace("@ARTICLE_TITLE", "'" . $title . "'", $sql);
+    $sql = str_replace("@ARTICLE_TEXT", "'" . $text . "'", $sql);
     array_push($sql_place, $sql);
 
     // 画像テーブル
     $file = "../sql/insert_article_image_table.sql";
-    $image = [$image];
-    foreach ($image as $value) {
+    foreach ($images as $value) {
         $sql = file_get_contents($file);
         $sql = str_replace("@ARTICLE_ID", $id, $sql);
-        $sql = str_replace("@ARTICLE_IMAGE", $value, $sql);
+        $sql = str_replace("@ARTICLE_IMAGE", "'" . $value . "'", $sql);
         array_push($sql_place, $sql);
     }
 
     // タグテーブル
     $file = "../sql/insert_article_tag_table.sql";
     $sql = file_get_contents($file);
-    $tag = [$tag];
-    foreach ($tag as $value) {
+    foreach ($tags as $value) {
         $sql = file_get_contents($file);
         $sql = str_replace("@ARTICLE_ID", $id, $sql);
-        $sql = str_replace("@ARTICLE_TAG", $value, $sql);
+        $sql = str_replace("@ARTICLE_TAG", "'" . $value . "'", $sql);
         array_push($sql_place, $sql);
     }
 
@@ -58,15 +57,21 @@ try {
         $sql .= $value;
     }
 
-    echo $sql;
-
-    // // クエリを実行する
+    // クエリを実行する
     $dbh->beginTransaction();
     $dbh->exec($sql);
     $dbh->commit();
 
+    echo json_encode([
+        "status" => "sucsess",
+        "message" => "Completion of registration"
+    ]);
+
 } catch(PDOException $e) {
-    echo $e->getMessage();
+    echo json_encode([
+        "status" => "failure",
+        "message" => $e->getMessage()
+    ]);
     $dbh->rollBack();
 } finally {
     // 接続を閉じる

@@ -17,3 +17,22 @@ async function getJson(path) {
     }
 }
 
+async function post(url, data) {
+    try {
+        const response = await fetch(url, {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            body: JSON.stringify(data)
+        });
+
+        if (response.ok) {
+            const json = await response.json();
+            return json;
+        } else {
+            throw new Error('Network response was not ok.');
+        }
+    } catch (error) {
+        console.error(error);
+    }
+}

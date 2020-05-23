@@ -3,29 +3,6 @@ html, body {
   height: 100%;
 }
 
-p {
-  width: 100%;
-  height: 30px;
-  font-size: 1.4rem;
-  font-weight: 900;
-  display: flex;
-  align-items: center;
-  margin: 0;
-}
-
-input, button, textarea {
-  font-size: 100%;
-  margin: 0;
-  padding: 0;
-  background: none;
-  border: none;
-  border-radius: 0;
-  outline: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
 .regester-wrapper {
   width: 100%;
   height: 100%;
@@ -56,10 +33,19 @@ input, button, textarea {
   margin-bottom: 10px;
 }
 
-.regester-image__input {
+.regester-image__label {
   width: 100%;
   height: 30px;
-  background-color: #ffffff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cccccc;
+  cursor: pointer;
+}
+
+.regester-image__input {
+  display: none;
 }
 
 .regester-text {
@@ -103,8 +89,8 @@ input, button, textarea {
   justify-content: space-between;
 }
 
-.regester-btn__submit, .regester-btn__cancel {
-  width: 8em;
+.regester-btn__submit {
+  width: 100%;
   height: 30px;
   font-size: 100%;
   border-radius: 5px;
