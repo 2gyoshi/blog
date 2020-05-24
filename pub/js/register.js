@@ -1,43 +1,43 @@
-class Utility {
-    async get(path) {
-        try {
-            const response = await fetch(path, {
-                method: "GET",
-                mode: "cors",
-                cache: "no-cache"
-            });
+// class Utility {
+//     async get(path) {
+//         try {
+//             const response = await fetch(path, {
+//                 method: "GET",
+//                 mode: "cors",
+//                 cache: "no-cache"
+//             });
     
-            if (response.ok) {
-                const json = await response.json();
-                return json;
-            } else {
-                throw new Error('Network response was not ok.');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }
+//             if (response.ok) {
+//                 const json = await response.json();
+//                 return json;
+//             } else {
+//                 throw new Error('Network response was not ok.');
+//             }
+//         } catch (error) {
+//             console.error(error);
+//         }
+//     }
     
-    async post(url, data) {
-        try {
-            const response = await fetch(url, {
-                method: "POST",
-                mode: "cors",
-                cache: "no-cache",
-                body: JSON.stringify(data)
-            });
+//     async post(url, data) {
+//         try {
+//             const response = await fetch(url, {
+//                 method: "POST",
+//                 mode: "cors",
+//                 cache: "no-cache",
+//                 body: JSON.stringify(data)
+//             });
     
-            if (response.ok) {
-                const json = await response.json();
-                return json;
-            } else {
-                throw new Error('Network response was not ok.');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }
-}
+//             if (response.ok) {
+//                 const json = await response.json();
+//                 return json;
+//             } else {
+//                 throw new Error('Network response was not ok.');
+//             }
+//         } catch (error) {
+//             console.error(error);
+//         }
+//     }
+// }
 
 class Tag {
     constructor() {
@@ -104,14 +104,11 @@ class Register {
         this.tag.display();
     }
 
-    addImgChange() {
-        console.log('test');
-    }
-
     async submitBtnClick() {
         const url = '/dev/blog/pub/php/register.php';
         const data = this.getFormData();
-        await post(url, data);
+        const response = await this.utility.post(url, data);
+        return alert(response.message);
     }
 
     getFormData() {
