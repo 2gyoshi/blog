@@ -4,7 +4,7 @@ html, body {
 }
 
 body {
-  background-color: #F5F5F5;
+  background-color: #FAFAFA;
 }
 
 .login-form {
@@ -15,7 +15,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   border-radius: .5rem;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #EEEEEE;
   background-color: #FFFFFF;
   position: absolute;
   top: 50%;

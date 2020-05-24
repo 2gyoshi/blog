@@ -5,7 +5,7 @@
     top: 0;
     left: 0;
     color: #ffffff;
-    background-color: #1a1b0e;
+    background-color: #212121;
     z-index: 2;
 
     &__container{
@@ -107,8 +107,8 @@
         position: fixed;
         top: 50px;
         right: -100%;
-        transition: right .2s ease;
-        background-color: #1a1b0e;
+        transition: right .1s ease;
+        background-color: #212121;
         z-index: 1;
         
         li {
