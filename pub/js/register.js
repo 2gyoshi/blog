@@ -44,9 +44,56 @@ class Tag {
     }
 }
 
+class Image {
+    constructor() {
+        this.items = [];
+        this.target = document.getElementById('imgDisplay');
+    }
+
+    addItem(value) {
+        if(value === '') return;
+        if(this.items.indexOf(value) > -1) return;
+        this.items.push(value);
+    }
+
+    removeItem(event) {
+        const item = event.target.parentNode;
+        const wrapper = item.parentNode;
+        const value = item.innerHTML;
+        wrapper.remove();
+        this.items = this.items.filter(e => e === value);
+    }
+
+    display() {
+        this.target.innerHTML = '';
+        this.items.forEach(e => {
+            const wrapperCssClass = 'register-img';
+            const imgCssClass = 'register-img__item';
+            const delCssClass = 'register-img__delete';
+            
+            const wrapper = document.createElement('div');
+            wrapper.classList.add(wrapperCssClass);
+            
+            const img = document.createElement('span');
+            img.classList.add(imgCssClass);
+            img.innerHTML = e;
+
+            const del = document.createElement('span');
+            del.addEventListener('click', this.removeItem.bind(this));
+            del.classList.add(delCssClass);
+            del.innerHTML = '×';
+
+            wrapper.insertAdjacentElement('beforeend', img);
+            img.insertAdjacentElement('beforeend', del);
+            this.target.insertAdjacentElement('beforeend', wrapper);
+        });
+    }
+}
+
 class Register {
-    constructor(utility, tag) {
+    constructor(tag, img, utility) {
         this.tag = tag;
+        this.img = img;
         this.utility = utility;
         
         // ボタン
@@ -66,16 +113,29 @@ class Register {
     }
 
     addEvent() {
+        this.addImgEvent();
         this.addTagBtnEvent();
         this.addSubmitBtnEvent();
     }
     
+    addImgEvent() {
+        this.imageInput.addEventListener('change', this.addImgInputChang.bind(this));
+    }
+
     addTagBtnEvent() {
         this.tagBtn.addEventListener('click', this.addTagBtnClick.bind(this));
     }
 
     addSubmitBtnEvent() {
         this.submitBtn.addEventListener('click', this.submitBtnClick.bind(this));
+    }
+
+    addImgInputChang() {
+        const files = this.imageInput.files;
+        for(let i = 0; i < files.length; i++) {
+            this.img.addItem(files[i].name);
+        }
+        this.img.display();
     }
 
     addTagBtnClick() {
@@ -93,13 +153,8 @@ class Register {
     getFormData() {
         const title  = this.titleInputDom.value;
         const text   = this.textInputDom.value;
-        const images = [];
+        const images = this.img.items;
         const tags   = this.tag.items;
-
-        const fileList = this.imageInput.files;
-        for(let i = 0; i < fileList.length; i++) {
-            images.push(fileList[i].name);
-        }
 
         const object = {
             title: title,
@@ -119,8 +174,9 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 window.addEventListener('load', function () {
-    const utility = new Utility();
+    const img = new Image();
     const tag = new Tag();
-    const register = new Register(utility, tag)
+    const utility = new Utility();
+    const register = new Register(tag, img, utility)
     register.init();
 });

@@ -53,9 +53,35 @@ body {
 }
 
 .register-image__input {
+  display: none;
+}
+
+.register-image__label {
   width: 100%;
   height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
+  border: 1px solid #9E9E9E;
+  cursor: pointer;
+  margin-bottom: .5em;
+}
+
+.register-image .register-img {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #BDBDBD;
+  background-color: #EEEEEE;
+  border-radius: .3rem;
+  padding: .2em .5em;
+  margin-right: .5em;
+  margin-bottom: .5em;
+}
+
+.register-image .register-img__delete {
+  margin-left: .5em;
+  cursor: pointer;
 }
 
 .register-text {
@@ -78,30 +104,35 @@ body {
 }
 
 .register-tag {
+  display: flex;
+  flex-wrap: wrap;
   margin-bottom: 60px;
 }
 
 .register-tag__name {
+  width: 100%;
   margin-top: 0;
-  margin-bottom: 0;
   margin-bottom: .2em;
 }
 
 .register-tag__input {
-  width: 150px;
+  width: 70%;
   height: 30px;
   padding: 0 .5em;
   border-radius: 5px;
-  margin-right: .5em;
   margin-bottom: .5em;
   border: 1px solid #9E9E9E;
 }
 
 .register-tag__button {
+  width: 25%;
   height: 30px;
-  padding: 0 .8em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 5px;
   border: 1px solid #9E9E9E;
+  margin-left: auto;
 }
 
 .register-tag .register-tag {
