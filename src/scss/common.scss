@@ -45,3 +45,22 @@ input, button, textarea {
     -moz-appearance: none;
     appearance: none;
 }
+
+.keep-out {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.keep-out-message {
+    color: #000000;
+    font-size: 30px;
+    display: inline-block;
+    background-color: #ffffff;
+    position: relative;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}

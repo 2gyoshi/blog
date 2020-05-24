@@ -47,16 +47,10 @@ class Register {
     addEvent() {
         this.addTagBtnEvent();
         this.addSubmitBtnEvent();
-
-        this.addImageEvent();
     }
     
     addTagBtnEvent() {
         this.tagBtn.addEventListener('click', this.addTagBtnClick.bind(this));
-    }
-
-    addImageEvent() {
-        this.imageInput.addEventListener('chage', this.addImgChange.bind(this));
     }
 
     addSubmitBtnEvent() {

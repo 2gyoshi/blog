@@ -1,4 +1,14 @@
+html, body {
+    height: 100%;
+}
 
+.about-main {
+    width: 100%;
+    height: calc(100% - 95px);
+    position: relative;
+    top: 50px;
+    
+}
 
 
 /* 480pxから */

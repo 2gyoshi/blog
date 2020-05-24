@@ -1,5 +1,14 @@
+html, body {
+    height: 100%;
+}
 
-
+.work-main {
+    width: 100%;
+    height: calc(100% - 95px);
+    position: relative;
+    top: 50px;
+    
+}
 
 /* 480pxから */
 @media (min-width: 480px) {
