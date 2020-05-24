@@ -1,48 +1,7 @@
-// class Utility {
-//     async get(path) {
-//         try {
-//             const response = await fetch(path, {
-//                 method: "GET",
-//                 mode: "cors",
-//                 cache: "no-cache"
-//             });
-    
-//             if (response.ok) {
-//                 const json = await response.json();
-//                 return json;
-//             } else {
-//                 throw new Error('Network response was not ok.');
-//             }
-//         } catch (error) {
-//             console.error(error);
-//         }
-//     }
-    
-//     async post(url, data) {
-//         try {
-//             const response = await fetch(url, {
-//                 method: "POST",
-//                 mode: "cors",
-//                 cache: "no-cache",
-//                 body: JSON.stringify(data)
-//             });
-    
-//             if (response.ok) {
-//                 const json = await response.json();
-//                 return json;
-//             } else {
-//                 throw new Error('Network response was not ok.');
-//             }
-//         } catch (error) {
-//             console.error(error);
-//         }
-//     }
-// }
-
 class Tag {
     constructor() {
         this.items = [];
-        this.displayDom = document.getElementById('tagDisplay');
+        this.target = document.getElementById('tagDisplay');
     }
 
     addItem(value) {
@@ -51,17 +10,37 @@ class Tag {
         this.items.push(value);
     }
 
-    removeItem(value) {
+    removeItem(event) {
+        const item = event.target.parentNode;
+        const wrapper = item.parentNode;
+        const value = item.innerHTML;
+        wrapper.remove();
         this.items = this.items.filter(e => e === value);
     }
 
     display() {
-        this.displayDom.innerHTML = this.getDisplayHTML();
-    }
+        this.target.innerHTML = '';
+        this.items.forEach(e => {
+            const wrapperCssClass = 'register-tag';
+            const tagCssClass = 'register-tag__item';
+            const delCssClass = 'register-tag__delete';
+            
+            const wrapper = document.createElement('div');
+            wrapper.classList.add(wrapperCssClass);
+            
+            const tag = document.createElement('span');
+            tag.classList.add(tagCssClass);
+            tag.innerHTML = e;
 
-    getDisplayHTML() {
-        const array = this.items.map(e => `<span>${e}</span>`);
-        return array.join();
+            const del = document.createElement('span');
+            del.addEventListener('click', this.removeItem.bind(this));
+            del.classList.add(delCssClass);
+            del.innerHTML = '×';
+
+            wrapper.insertAdjacentElement('beforeend', tag);
+            tag.insertAdjacentElement('beforeend', del);
+            this.target.insertAdjacentElement('beforeend', wrapper);
+        });
     }
 }
 
