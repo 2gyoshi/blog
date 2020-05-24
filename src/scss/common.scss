@@ -6,7 +6,7 @@ html {
 
 body {
     width: 100%;
-    color: #12263f;
+    color: #212121;
     font-size: 1.4rem;
     font-family: '游ゴシック体', 'Yu Gothic', YuGothic, sans-serif;
     font-weight: 500;
@@ -23,14 +23,6 @@ h2 {
 a {
     color: inherit;
     text-decoration: none;
-}
-
-p {
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
 }
 
 input, button, textarea {
@@ -55,10 +47,9 @@ input, button, textarea {
 }
 
 .keep-out-message {
-    color: #000000;
     font-size: 30px;
     display: inline-block;
-    background-color: #ffffff;
+    background-color: #FFFFFF;
     position: relative;
     top: 10%;
     left: 50%;

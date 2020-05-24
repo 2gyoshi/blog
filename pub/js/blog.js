@@ -19,26 +19,25 @@ class Blog {
         const target = document.querySelector('.blog-main');
         const data = this.filterJson();
         data.forEach(e => {
-            let html = 
-                `<article class="card">
-                    <div class="card-header">
-                        ${this.getTitleHTML(e)}
+            let html = `<article class="card">
+                <div class="card-header">
+                    ${this.getTitleHTML(e)}
+                </div>
+                <div class="card-content">
+                    ${this.getImageHTML(e.images)}
+                    <p class="card-content__text">
+                        ${e.text}
+                    </p>
+                </div>
+                <div class="card-fotter">
+                    <div class="card-fotter__comment">
+                        Comment
                     </div>
-                    <div class="card-content">
-                        ${this.getImageHTML(e.images)}
-                        <p class="card-content__text">
-                            ${e.text}
-                        </p>
-                    </div>
-                    <div class="card-fotter">
-                        <div class="card-fotter__comment">
-                            Comment
-                        </div>
-                        <time class="card-fotter__update" datetime="${e.time}">
-                            ${e.time}
-                        </time>
-                    </div>
-                </article>`;
+                    <time class="card-fotter__update" datetime="${e.time}">
+                        ${e.time}
+                    </time>
+                </div>
+            </article>`;
             target.insertAdjacentHTML('beforeend', html);
         });
     }
@@ -46,17 +45,16 @@ class Blog {
     renderTag() {
         const target = document.querySelector('.blog-aside');
 
-        let html = 
-            `<div class="card">
-                <div class="card-header">
-                    <span class="card-header__title--aside">
-                        Tags
-                    </span>
-                </div>
-                <div class="card-content">
-                    ${this.getTagHTML()}
-                </div>
-            </div>`;
+        let html = `<div class="card">
+            <div class="card-header">
+                <span class="card-header__title--aside">
+                    Tags
+                </span>
+            </div>
+            <div class="card-content">
+                ${this.getTagHTML()}
+            </div>
+        </div>`;
         
         target.insertAdjacentHTML('beforeend', html);
     }
