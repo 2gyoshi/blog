@@ -29,14 +29,17 @@ function get_sql_file_content($file){
 function get_select_sql_file_name($value) {
     $file = "";
     switch ($value) {
-        case 'article_id':
-            $file = "select_new_article_id.sql";
+        case 'article':
+            $file = "select_article_data.sql";
             break;
         case 'user':
             $file = "select_user.sql";
             break;
         case 'tag':
             $file = "select_tags_data.sql";
+            break;
+        case 'article_id':
+            $file = "select_new_article_id.sql";
             break;
         default:
             break;

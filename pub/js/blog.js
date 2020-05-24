@@ -40,7 +40,7 @@ class Blog {
 
     getData() {
         const query = location.search;
-        const json  = this.json.articles;
+        const json  = this.json;
 
         if(query === '') return json;
         
