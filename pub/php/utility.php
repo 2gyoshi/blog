@@ -35,9 +35,6 @@ function get_select_sql_file_name($value) {
         case 'user':
             $file = "select_user.sql";
             break;
-        case 'tag':
-            $file = "select_tags_data.sql";
-            break;
         case 'article_id':
             $file = "select_new_article_id.sql";
             break;
