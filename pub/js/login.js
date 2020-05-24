@@ -3,11 +3,11 @@ class Login {
         this.nextPage = '/dev/blog/pub/html/register.html';
         this.utility = utility;
     }
-    async decision() {
+    async check() {
         const path = '/dev/blog/pub/php/get_user_json.php';
         const json = await this.utility.get(path);
-        const id   = document.querySelector('#js-login-id').value;
-        const pass = document.querySelector('#js-login-pass').value;
+        const id   = document.querySelector('#loginID').value;
+        const pass = document.querySelector('#loginPass').value;
         const result = json.filter(e => e.id === id).filter(e => e.password === pass);
         if(result.length === 0) return this.mistake();
         this.correct();
@@ -25,6 +25,6 @@ class Login {
 window.addEventListener('load', async function () {
     const utility = new Utility();
     const login = new Login(utility);
-    const btn = document.querySelector('#js-login-btn');
-    btn.addEventListener('click', login.decision.bind(login));
+    const btn = document.querySelector('#loginBtn');
+    btn.addEventListener('click', login.check.bind(login));
 });
