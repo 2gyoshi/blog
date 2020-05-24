@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>asobiba</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="/dev/blog/pub/css/ress.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/common.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/header.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/footer.css" rel="stylesheet" />
+    <link href="/dev/blog/pub/css/register.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="register-wrapper">
+        <form class="register-form">
+            <div class="register-title">
+                <p class="register-title__name">Title</p>
+                <input type="text" id="titleInput" class="register-title__input">
+            </div>
+            <div class="register-image">
+                <p class="register-image__name">Image</p>
+                <input type="file" id="imageInput"
+                    class="register-image__input" accept="image/*" multiple files>
+            </div>
+            <div class="register-text">
+                <p class="register-text__name">Text</p>
+                <textarea id="textInput" class="register-text__input"></textarea>
+            </div>
+            <div class="register-tag">
+                <p class="register-tag__name">Tag</p>
+                <input type="text" name="tag" id="tagInput" class="register-tag__input">
+                <button type="button" id="tagBtn" class="register-tag__button">
+                    add
+                </button>
+                <div id="tagDisplay"></div>
+            </div>
+            <div class="register-btn">
+                <button type="button" id="submitBtn" class="register-btn__submit">
+                    submit
+                </button>
+            </div>
+        </form>
+    </div>
+    <script src="/dev/blog/pub/js/utility.js"></script>
+    <script src="/dev/blog/pub/js/register.js"></script>
+</body>
+</html>
+

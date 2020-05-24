@@ -1,6 +1,6 @@
 class Login {
     constructor() {
-        this.nextPage = '/dev/blog/pub/html/regester.html';
+        this.nextPage = '/dev/blog/pub/html/register.html';
     }
     async decision() {
         const path = '/dev/blog/pub/php/get_user_json.php';

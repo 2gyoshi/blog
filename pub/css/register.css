@@ -3,7 +3,7 @@ html, body {
   height: 100%;
 }
 
-.regester-wrapper {
+.register-wrapper {
   width: 100%;
   height: 100%;
   display: flex;
@@ -11,17 +11,17 @@ html, body {
   align-items: center;
 }
 
-.regester-form {
+.register-form {
   width: 400px;
   padding: 50px;
   border: 1px solid #cccccc;
 }
 
-.regester-title {
+.register-title {
   margin-bottom: 10px;
 }
 
-.regester-title__input {
+.register-title__input {
   width: 100%;
   height: 30px;
   padding: 0 .5em;
@@ -29,21 +29,21 @@ html, body {
   border: 1px solid #cccccc;
 }
 
-.regester-image {
+.register-image {
   margin-bottom: 10px;
 }
 
-.regester-image__input {
+.register-image__input {
   width: 100%;
   height: 30px;
   border-radius: 5px;
 }
 
-.regester-text {
+.register-text {
   margin-bottom: 10px;
 }
 
-.regester-text__input {
+.register-text__input {
   width: 100%;
   height: 150px;
   padding: .5em;
@@ -53,11 +53,11 @@ html, body {
   appearance: none;
 }
 
-.regester-tag {
+.register-tag {
   margin-bottom: 60px;
 }
 
-.regester-tag__input {
+.register-tag__input {
   width: 150px;
   height: 30px;
   padding: 0 .5em;
@@ -66,21 +66,21 @@ html, body {
   border: 1px solid #cccccc;
 }
 
-.regester-tag__button {
+.register-tag__button {
   height: 30px;
   padding: 0 .8em;
   border-radius: 5px;
   border: 1px solid #cccccc;
 }
 
-.regester-btn {
+.register-btn {
   width: 100%;
   height: 30px;
   display: flex;
   justify-content: space-between;
 }
 
-.regester-btn__submit {
+.register-btn__submit {
   width: 100%;
   height: 30px;
   font-size: 100%;

@@ -67,7 +67,7 @@ class Register {
     }
 
     async submitBtnClick() {
-        const url = '/dev/blog/pub/php/regester.php';
+        const url = '/dev/blog/pub/php/register.php';
         const data = this.getFormData();
         await post(url, data);
     }
@@ -96,7 +96,6 @@ class Register {
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-    // TODO： まとめられないか考える
     const referrer = 'http://localhost/dev/blog/pub/html/login.html'
     if(document.referrer !== referrer) location.href = referrer;
 });
