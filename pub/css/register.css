@@ -3,6 +3,11 @@ html, body {
   height: 100%;
 }
 
+body {
+  color: #212121;
+  background-color: #F5F5F5;
+}
+
 .register-wrapper {
   width: 100%;
   height: 100%;
@@ -12,13 +17,21 @@ html, body {
 }
 
 .register-form {
-  width: 400px;
+  width: 440px;
   padding: 50px;
-  border: 1px solid #cccccc;
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
+  box-shadow: 0 0.75rem 1.5rem rgba(18, 38, 63, 0.03);
 }
 
 .register-title {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.register-title__name {
+  margin-top: 0;
+  margin-bottom: .2em;
 }
 
 .register-title__input {
@@ -26,11 +39,17 @@ html, body {
   height: 30px;
   padding: 0 .5em;
   border-radius: 5px;
-  border: 1px solid #cccccc;
+  border: 1px solid #E0E0E0;
 }
 
 .register-image {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.register-image__name {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-bottom: .2em;
 }
 
 .register-image__input {
@@ -40,7 +59,13 @@ html, body {
 }
 
 .register-text {
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.register-text__name {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-bottom: .2em;
 }
 
 .register-text__input {
@@ -49,12 +74,18 @@ html, body {
   padding: .5em;
   font-size: 100%;
   border-radius: 5px;
-  border: 1px solid #cccccc;
+  border: 1px solid #E0E0E0;
   appearance: none;
 }
 
 .register-tag {
   margin-bottom: 60px;
+}
+
+.register-tag__name {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-bottom: .2em;
 }
 
 .register-tag__input {
@@ -63,14 +94,14 @@ html, body {
   padding: 0 .5em;
   margin-right: .5em;
   border-radius: 5px;
-  border: 1px solid #cccccc;
+  border: 1px solid #E0E0E0;
 }
 
 .register-tag__button {
   height: 30px;
   padding: 0 .8em;
   border-radius: 5px;
-  border: 1px solid #cccccc;
+  border: 1px solid #E0E0E0;
 }
 
 .register-btn {
@@ -85,5 +116,5 @@ html, body {
   height: 30px;
   font-size: 100%;
   border-radius: 5px;
-  border: 1px solid #cccccc;
+  border: 1px solid #E0E0E0;
 }
