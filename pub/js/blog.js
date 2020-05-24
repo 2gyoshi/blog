@@ -1,18 +1,60 @@
+class Utility {
+    async get(path) {
+        try {
+            const response = await fetch(path, {
+                method: "GET",
+                mode: "cors",
+                cache: "no-cache"
+            });
+    
+            if (response.ok) {
+                const json = await response.json();
+                return json;
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    async post(url, data) {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                body: JSON.stringify(data)
+            });
+    
+            if (response.ok) {
+                const json = await response.json();
+                return json;
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
 // 個別表示と分離するべきかどうか考える
 class Blog {
-    constructor() {
+    constructor(utility) {
         this.json = null;
+        this.utility = utility;
     }
 
     // TODO: これいらなくない？
     async getArticleData() {
         const path = '/dev/blog/pub/php/get_article_json.php';
-        this.json = await getJson(path);
+        this.json = await this.utility.get(path);
     }
 
     async renderArticle() {
         const target = document.querySelector('.blog-main');
-        const data = this.getData();
+        const data = this.filterJson();
         data.forEach(e => {
             let html = 
                 `<article class="card">
@@ -38,7 +80,7 @@ class Blog {
         });
     }
 
-    getData() {
+    filterJson() {
         const query = location.search;
         const json  = this.json;
 
@@ -57,14 +99,13 @@ class Blog {
 
     }
 
-
     getImageHTML(images) {
         let html = '';
         if(images[0] === null) return html;
         const path = '/dev/blog/pub/img/';
         images.forEach(e => {
-            // TODO: alt属性をつける
-            html += `<img class="card-content__image" src="${path + e}" alt="test"></img>`;
+            html += `<img class="card-content__image"
+                src="${path + e}" alt="Cannot display image file">`;
         });
         return html;
     }
@@ -99,12 +140,14 @@ class Blog {
     async renderTags() {
         const target = document.querySelector('.blog-aside');
         const path = '/dev/blog/pub/php/get_tags_json.php';
-        const json = await getJson(path);
+        const json = await this.utility.get(path);
 
         let html = 
             `<div class="card">
                 <div class="card-header">
-                    <span class="card-header__title--aside">Tags</span>
+                    <span class="card-header__title--aside">
+                        Tags
+                    </span>
                 </div>
                 <div class="card-content">
                     ${this.getTagHTML(json)}
@@ -130,11 +173,10 @@ class Blog {
     }
 }
 
-window.onload = async function(){
-    const blog = new Blog();
+window.addEventListener('load', async function () {
+    const utility = new Utility();
+    const blog = new Blog(utility);
     await blog.getArticleData();
     await blog.renderArticle();
     await blog.renderTags();
-
-
-}
+});

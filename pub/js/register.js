@@ -1,3 +1,44 @@
+class Utility {
+    async get(path) {
+        try {
+            const response = await fetch(path, {
+                method: "GET",
+                mode: "cors",
+                cache: "no-cache"
+            });
+    
+            if (response.ok) {
+                const json = await response.json();
+                return json;
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
+    async post(url, data) {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                body: JSON.stringify(data)
+            });
+    
+            if (response.ok) {
+                const json = await response.json();
+                return json;
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
 class Tag {
     constructor() {
         this.items = [];
@@ -25,8 +66,9 @@ class Tag {
 }
 
 class Register {
-    constructor() {
-        this.tag = new Tag;
+    constructor(utility, tag) {
+        this.tag = tag;
+        this.utility = utility;
         
         // ボタン
         this.tagBtn = document.getElementById('tagBtn');
@@ -101,5 +143,8 @@ window.addEventListener('DOMContentLoaded', function () {
 });
 
 window.addEventListener('load', function () {
-    new Register().init();
+    const utility = new Utility();
+    const tag = new Tag();
+    const register = new Register(utility, tag)
+    register.init();
 });
