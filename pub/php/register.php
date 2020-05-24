@@ -14,14 +14,14 @@ function main() {
         $user = "root";
         $pass = "root";
         $dbh  = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
-    
+
         $sql = get_insert_sql($dbh);
-    
+
         // クエリを実行する
         $dbh->beginTransaction();
         $dbh->exec($sql);
         $dbh->commit();
-    
+
         echo json_encode(get_api_result_sucsess());
     } catch(PDOException $e) {
         echo json_encode(get_api_result_failure($e->getMessage()));
@@ -50,7 +50,7 @@ function get_insert_sql($dbh) {
 
 // 記事IDを取得する
 function get_article_id($dbh) {
-    $file = "select_new_article_id.sql";
+    $file = get_select_sql_file_name("article_id");
     $sql = get_sql_file_content($file);
 
     $stmt = $dbh->query($sql);
@@ -61,7 +61,7 @@ function get_article_id($dbh) {
 
 // 記事テーブルに登録するクエリを取得する
 function get_insert_sql_article($title, $text) {
-    $file = "insert_article_table.sql";
+    $file = get_insert_sql_file_name("article");
     $sql = get_sql_file_content($file);
 
     $sql = str_replace("@ARTICLE_TITLE", "'" . $title . "'", $sql);
@@ -72,16 +72,15 @@ function get_insert_sql_article($title, $text) {
 
 // 画像テーブルに登録するクエリを取得する
 function get_insert_sql_image($id, $images) {
-    $file = "insert_article_image_table.sql";
+    $file = get_insert_sql_file_name("image");
     $sql = get_sql_file_content($file);
-    
+
     $sql_place = [];
 
     foreach ($images as $value) {
-        $sql = file_get_contents($file);
-        $sql = str_replace("@ARTICLE_ID", $id, $sql);
-        $sql = str_replace("@ARTICLE_IMAGE", "'" . $value . "'", $sql);
-        array_push($sql_place, $sql);
+        $tmp = str_replace("@ARTICLE_ID", $id, $sql);
+        $tmp = str_replace("@ARTICLE_IMAGE", "'" . $value . "'", $tmp);
+        array_push($sql_place, $tmp);
     }
 
     return implode($sql_place);
@@ -89,16 +88,15 @@ function get_insert_sql_image($id, $images) {
 
 // タグテーブルに登録するクエリを取得する
 function get_insert_sql_tag($id, $tags) {
-    $file = "insert_article_tag_table.sql";
+    $file = get_insert_sql_file_name("tag");
     $sql = get_sql_file_content($file);
 
     $sql_place = [];
 
     foreach ($tags as $value) {
-        $sql = file_get_contents($file);
-        $sql = str_replace("@ARTICLE_ID", $id, $sql);
-        $sql = str_replace("@ARTICLE_TAG", "'" . $value . "'", $sql);
-        array_push($sql_place, $sql);
+        $tmp = str_replace("@ARTICLE_ID", $id, $sql);
+        $tmp = str_replace("@ARTICLE_TAG", "'" . $value . "'", $tmp);
+        array_push($sql_place, $tmp);
     }
 
     return implode($sql_place);
