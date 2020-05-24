@@ -120,7 +120,7 @@ class Blog {
         const cssClass = 'card-content__tag';
 
         let html = '';
-        json.items.forEach(e => {
+        json.forEach(e => {
             html +=
                 `<a class="${cssClass}" href="${path}?tag=${e.value}">
                     ${e.value}

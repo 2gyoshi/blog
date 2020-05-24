@@ -4,6 +4,10 @@ require('./utility.php');
 
 main();
 
+function main() {
+    echo get_user_json();
+}
+
 class User {
     public string $id = "";
     public string $password = "";
@@ -15,10 +19,6 @@ class User {
     public function setPassword($password) {
         $this->password = $password;
     }
-}
-
-function main() {
-    echo get_user_json();
 }
 
 function get_user_json() {
@@ -54,8 +54,9 @@ function get_user_data() {
         $pass = "root";
         $pdo  = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
 
-        $sql = get_select_sql();
-
+        $file = get_select_sql_file_name("user");
+        $sql = get_sql_file_content($file);
+    
 		// // クエリを実行する
         $result = $pdo->query($sql);
 
@@ -68,12 +69,5 @@ function get_user_data() {
 
     return $result;
 }
-
-function get_select_sql() {
-    $file = get_select_sql_file_name("user");
-    $sql = get_sql_file_content($file);
-    return $sql;
-}
-
 
 ?>
