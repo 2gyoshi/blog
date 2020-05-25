@@ -24,10 +24,10 @@ class Tag {
             const wrapperCssClass = 'register-tag';
             const tagCssClass = 'register-tag__item';
             const delCssClass = 'register-tag__delete';
-            
+
             const wrapper = document.createElement('div');
             wrapper.classList.add(wrapperCssClass);
-            
+
             const tag = document.createElement('span');
             tag.classList.add(tagCssClass);
             tag.innerHTML = e;
@@ -66,26 +66,29 @@ class Image {
 
     display() {
         this.target.innerHTML = '';
+        // FileListオブジェクトを利用する
         this.items.forEach(e => {
-            const wrapperCssClass = 'register-img';
-            const imgCssClass = 'register-img__item';
-            const delCssClass = 'register-img__delete';
-            
-            const wrapper = document.createElement('div');
-            wrapper.classList.add(wrapperCssClass);
-            
-            const img = document.createElement('span');
-            img.classList.add(imgCssClass);
-            img.innerHTML = e;
+            for(let i = 0; i < e.length; i++) {
+                const wrapperCssClass = 'register-img';
+                const imgCssClass = 'register-img__item';
+                const delCssClass = 'register-img__delete';
 
-            const del = document.createElement('span');
-            del.addEventListener('click', this.removeItem.bind(this));
-            del.classList.add(delCssClass);
-            del.innerHTML = '×';
+                const wrapper = document.createElement('div');
+                wrapper.classList.add(wrapperCssClass);
 
-            wrapper.insertAdjacentElement('beforeend', img);
-            img.insertAdjacentElement('beforeend', del);
-            this.target.insertAdjacentElement('beforeend', wrapper);
+                const img = document.createElement('span');
+                img.classList.add(imgCssClass);
+                img.innerHTML = e[i].name;
+
+                const del = document.createElement('span');
+                del.addEventListener('click', this.removeItem.bind(this));
+                del.classList.add(delCssClass);
+                del.innerHTML = '×';
+
+                wrapper.insertAdjacentElement('beforeend', img);
+                img.insertAdjacentElement('beforeend', del);
+                this.target.insertAdjacentElement('beforeend', wrapper);
+            }
         });
     }
 }
@@ -95,7 +98,7 @@ class Register {
         this.tag = tag;
         this.img = img;
         this.utility = utility;
-        
+
         // ボタン
         this.tagBtn = document.getElementById('tagBtn');
         this.imgBtn = document.getElementById('imgBtn');
@@ -117,9 +120,9 @@ class Register {
         this.addTagBtnEvent();
         this.addSubmitBtnEvent();
     }
-    
+
     addImgEvent() {
-        this.imageInput.addEventListener('change', this.addImgInputChang.bind(this));
+        this.imageInput.addEventListener('change', this.addImgInputChange.bind(this));
     }
 
     addTagBtnEvent() {
@@ -130,11 +133,8 @@ class Register {
         this.submitBtn.addEventListener('click', this.submitBtnClick.bind(this));
     }
 
-    addImgInputChang() {
-        const files = this.imageInput.files;
-        for(let i = 0; i < files.length; i++) {
-            this.img.addItem(files[i].name);
-        }
+    addImgInputChange() {
+        this.img.addItem(this.imageInput.files);
         this.img.display();
     }
 
@@ -144,18 +144,52 @@ class Register {
     }
 
     async submitBtnClick() {
+        const registerResult = await this.register();
+        if(registerResult.status < 0) {
+            return alert(registerResult.message);
+        }
+
+        const uploadResult = await this.upload();
+        if(uploadResult.status < 0) {
+            return alert(uploadResult.message);
+        }
+
+        return alert('success!');
+    }
+
+    async register() {
         const url = '/dev/blog/pub/php/register.php';
         const data = this.getFormData();
         const response = await this.utility.post(url, data);
-        return alert(response.message);
+        return response;
+    }
+
+    async upload() {
+        const url = '/dev/blog/pub/php/upload.php';
+        const formData = new FormData();
+        this.img.items.forEach(e => {
+            for(let i = 0; i < e.length; i++) {
+                formData.append('files[]', e[i]);
+            }
+        });
+        const response = await this.utility.upload(url, formData);
+        return response;
     }
 
     getFormData() {
         const title  = this.titleInputDom.value;
         const text   = this.textInputDom.value;
-        const images = this.img.items;
+        const images = [];
         const tags   = this.tag.items;
 
+        this.img.items.forEach(e => {
+            for(let i = 0; i < e.length; i++) {
+                let file = e[i].name;
+                if(images.indexOf(file) !== -1) continue;
+                images.push(e[i].name);
+            }
+        });
+   
         const object = {
             title: title,
             text: text,
@@ -165,7 +199,7 @@ class Register {
 
         return object;
     }
-    
+
 }
 
 window.addEventListener('DOMContentLoaded', function () {

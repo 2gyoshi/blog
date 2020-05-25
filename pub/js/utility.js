@@ -37,5 +37,25 @@ class Utility {
             console.error(error);
         }
     }
+    
+    async upload(url, formData) {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                mode: "cors",
+                cache: "no-cache",
+                body: formData
+            });
+    
+            if (response.ok) {
+                const json = await response.json();
+                return json;
+            } else {
+                throw new Error('Network response was not ok.');
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
 

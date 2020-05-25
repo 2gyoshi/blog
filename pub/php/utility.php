@@ -1,11 +1,11 @@
 <?php
 
-function get_api_result_sucsess() {
+// TODO: 成功時は値を返すようにする 
+function get_api_result_sucsess($message) {
     $code_sucsess = 0;
-    $ms_success = "sucsess!";
     $result = [
         "status" => $code_sucsess,
-        "message" => $ms_success
+        "message" => $message
     ];
     return $result;
 }

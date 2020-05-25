@@ -107,7 +107,7 @@ class Blog {
     getImageHTML(images) {
         let html = '';
         if(images[0] === null) return html;
-        const path = '/dev/blog/pub/img/';
+        const path = '/dev/blog/pub/img/article/';
         images.forEach(e => {
             html += `<img class="card-content__image"
                 src="${path + e}" alt="Cannot display image file">`;

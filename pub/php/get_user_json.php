@@ -35,7 +35,7 @@ function get_user_json() {
             $user->setPassword($row[$col_password]);
             array_push($result, $user);
         }
-    } catch(PDOException $e) {
+    } catch(Exception $e) {
         echo json_encode(get_api_result_failure($e->getMessage()));
     }
 

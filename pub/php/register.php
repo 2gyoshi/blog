@@ -22,7 +22,7 @@ function main() {
         $dbh->exec($sql);
         $dbh->commit();
 
-        echo json_encode(get_api_result_sucsess());
+        echo json_encode(get_api_result_sucsess(true));
     } catch(PDOException $e) {
         echo json_encode(get_api_result_failure($e->getMessage()));
         $dbh->rollBack();
