@@ -9,10 +9,11 @@ function main() {
 
     try {
         // DBへ接続する
-        $host = "localhost";
-        $db = "blog";
-        $user = "root";
-        $pass = "root";
+		$config = get_db_config();
+        $host = $config["host"];
+        $db = $config["db"];
+        $user = $config["user"];
+		$pass = $config["pass"];
         $dbh  = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
 
         $sql = get_insert_sql($dbh);

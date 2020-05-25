@@ -62,5 +62,14 @@ function get_insert_sql_file_name($value) {
     return $file;
 }
 
+function get_db_config() {
+    $config = [
+        "host" => "localhost",
+        "db" => "blog",
+        "user" => "root",
+        "pass" => "root"
+    ];
+    return $config;
+}
 
 ?>
