@@ -3,11 +3,18 @@ class Blog {
     constructor(utility) {
         this.json = null;
         this.utility = utility;
+
+        // TODO: 環境依存変数 ====================
+        this.articleDataAPIPath = CONFIG.articleDataAPIPath;
+        this.articleHTMLPath = CONFIG.articleHTMLPath;
+        this.articleImagePath = CONFIG.articleImagePath;
+        this.blogHTMLPath = CONFIG.blogHTMLPath;
+        //======================================
+
     }
 
     async getArticleData() {
-        const path = '/dev/blog/pub/php/get_article_json.php';
-        this.json = await this.utility.get(path);
+        this.json = await this.utility.get(this.articleDataAPIPath);
     }
 
     render() {
@@ -78,17 +85,16 @@ class Blog {
     getTitleHTML(e) {
         let html = '';
         const query = location.search;
-        const path = `/dev/blog/pub/html/article.html`;
         const cssClass = 'card-header__title';
         
         if(query === '') {
-            html = `<a class="${cssClass}" href="${path}?id=${e.id}">
+            html = `<a class="${cssClass}" href="${this.articleHTMLPath}?id=${e.id}">
                 ${e.title}
             </a>`;
         } 
 
         if(query.indexOf('tag') !== -1) {
-            html = `<a class="${cssClass}" href="${path}?id=${e.id}">
+            html = `<a class="${cssClass}" href="${this.articleHTMLPath}?id=${e.id}">
                 ${e.title}
             </span>`;
         } 
@@ -103,10 +109,8 @@ class Blog {
     }
 
     getTextHTML(text) {
-        const array = text.split('\n');
-        console.log(array);
-        
         let html = '';
+        const array = text.split('\n');
         array.forEach(e => html += `<p class="card-content__text">${e}</p>`);
         return html;
     }
@@ -114,10 +118,9 @@ class Blog {
     getImageHTML(images) {
         let html = '';
         if(images[0] === null) return html;
-        const path = '/dev/blog/pub/img/article/';
         images.forEach(e => {
             html += `<img class="card-content__image"
-                src="${path + e}" alt="Cannot display image file">`;
+                src="${this.articleImagePath + e}" alt="Cannot display image file">`;
         });
 
         return html;
@@ -125,7 +128,6 @@ class Blog {
 
     getTagHTML() {
         let html = '';
-        const path = '/dev/blog/pub/html/blog.html';
         const cssClass = 'card-content__tag';
 
         let array = [];
@@ -134,7 +136,7 @@ class Blog {
 
         tags.forEach(i => {
             html +=
-                `<a class="${cssClass}" href="${path}?tag=${i}">${i}</a>`;
+                `<a class="${cssClass}" href="${this.blogHTMLPath}?tag=${i}">${i}</a>`;
         });
 
         return html;

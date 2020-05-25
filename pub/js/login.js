@@ -1,11 +1,15 @@
 class Login {
     constructor(utility) {
-        this.nextPage = '/dev/blog/pub/html/register.html';
         this.utility = utility;
+
+        // TODO: 環境依存変数 ====================
+        this.nextPage = CONFIG.registerHTMLPath;
+        this.userDataAPIPath = CONFIG.userDataAPIPath;
+        //======================================
     }
+
     async check() {
-        const path = '/dev/blog/pub/php/get_user_json.php';
-        const json = await this.utility.get(path);
+        const json = await this.utility.get(this.userDataAPIPath);
         const id   = document.querySelector('#loginID').value;
         const pass = document.querySelector('#loginPass').value;
         const result = json.filter(e => e.id === id).filter(e => e.password === pass);

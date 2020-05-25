@@ -109,6 +109,11 @@ class Register {
         this.titleInputDom = document.getElementById('titleInput');
         this.textInputDom  = document.getElementById('textInput');
         this.tagInputDom   = document.getElementById('tagInput');
+
+        // TODO: 環境依存変数 ====================
+        this.registerAPIPath = CONFIG.registerAPIPath;
+        this.uploadAPIPath = CONFIG.uploadAPIPath;
+        //====================================== 
     }
 
     init() {
@@ -158,21 +163,19 @@ class Register {
     }
 
     async register() {
-        const url = '/dev/blog/pub/php/register.php';
         const data = this.getFormData();
-        const response = await this.utility.post(url, data);
+        const response = await this.utility.post(this.registerAPIPath, data);
         return response;
     }
 
     async upload() {
-        const url = '/dev/blog/pub/php/upload.php';
         const formData = new FormData();
         this.img.items.forEach(e => {
             for(let i = 0; i < e.length; i++) {
                 formData.append('files[]', e[i]);
             }
         });
-        const response = await this.utility.upload(url, formData);
+        const response = await this.utility.upload(this.uploadAPIPath, formData);
         return response;
     }
 
@@ -199,11 +202,12 @@ class Register {
 
         return object;
     }
-
 }
 
 window.addEventListener('DOMContentLoaded', function () {
-    const referrer = 'http://localhost/dev/blog/pub/html/login.html'
+    // TODO: 環境依存変数 ====================
+    const referrer = CONFIG.loginHTMLPath;
+    //====================================== 
     if(document.referrer !== referrer) location.href = referrer;
 });
 

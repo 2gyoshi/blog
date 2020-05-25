@@ -10,7 +10,7 @@ function main() {
 
 class Article {
 	public int $id = 0;
-	public string $title = "no title";
+	public string $title = "";
 	public string $text = "";
 	public array $images = array();
 	public array $tags = array();
