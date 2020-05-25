@@ -25,9 +25,7 @@ class Blog {
                 </div>
                 <div class="card-content">
                     ${this.getImageHTML(e.images)}
-                    <p class="card-content__text">
-                        ${e.text}
-                    </p>
+                    ${this.getTextHTML(e.text)}
                 </div>
                 <div class="card-fotter">
                     <div class="card-fotter__comment">
@@ -101,6 +99,15 @@ class Blog {
             </span>`;
         }
 
+        return html;
+    }
+
+    getTextHTML(text) {
+        const array = text.split('\n');
+        console.log(array);
+        
+        let html = '';
+        array.forEach(e => html += `<p class="card-content__text">${e}</p>`);
         return html;
     }
 
