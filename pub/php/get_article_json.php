@@ -1,47 +1,12 @@
 <?php
 
-require('./utility.php');
+require(dirname(__FILE__)."/utility.php");
+require(dirname(__FILE__)."/article.php");
 
 main();
 
 function main() {
     echo get_article_json();
-}
-
-class Article {
-	public int $id = 0;
-	public string $title = "";
-	public string $text = "";
-	public array $images = array();
-	public array $tags = array();
-	public string $time = "";
-
-	function __construct($id, $title, $text, $image, $tag, $time) {
-		$this->id = $id;
-		$this->title = $title;
-		$this->text = $text;
-		array_push($this->images, $image);
-		array_push($this->tags, $tag);
-		$this->time = $time;
-	}
-
-	public function getID() {
-		return $this->id;
-	}
-
-	public function pushImage($image) {
-		foreach ($this->images as $value) {
-			if($image === $value) return;
-		}
-		array_push($this->images, $image);
-	}
-
-	public function pushTag($tag) {
-		foreach ($this->tags as $value) {
-			if($tag === $value) return;
-		}
-		array_push($this->tags, $tag);
-	}
 }
 
 function get_article_json() {
@@ -79,7 +44,7 @@ function get_article_json() {
 			}
 		}
 	} catch(Exception $e) {
-        echo json_encode(get_api_result_failure($e->getMessage()));
+        echo json_encode(Utility::get_responce(-1, $e->getMessage()));
     }
     
     return json_encode($result);
@@ -91,21 +56,21 @@ function get_article_data() {
 
     try {
         // DBへ接続する
-		$config = get_db_config();
+		$config = Utility::get_db_config();
         $host = $config["host"];
         $db = $config["db"];
         $user = $config["user"];
 		$pass = $config["pass"];
         $pdo  = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
 
-        $file = get_select_sql_file_name("article");
-        $sql = get_sql_file_content($file);
+        $file = Utility::get_select_sql_file_name("article");
+        $sql = Utility::get_sql_file_content($file);
 
 		// // クエリを実行する
         $result = $pdo->query($sql);
 
     } catch(PDOException $e) {
-        echo json_encode(get_api_result_failure($e->getMessage()));
+        echo json_encode(Utility::get_responce(-1, $e->getMessage()));
     } finally {
         // 接続を閉じる
         $pdo = null;
@@ -113,4 +78,5 @@ function get_article_data() {
 
     return $result;
 }
+
 ?>

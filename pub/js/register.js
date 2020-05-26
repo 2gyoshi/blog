@@ -146,17 +146,18 @@ class Register {
     addTagBtnClick() {
         this.tag.addItem(this.tagInputDom.value);
         this.tag.display();
+        this.tagInputDom.value = '';
     }
 
     async submitBtnClick() {
         const registerResult = await this.register();
         if(registerResult.status < 0) {
-            return alert(registerResult.message);
+            return alert(registerResult.result);
         }
 
         const uploadResult = await this.upload();
         if(uploadResult.status < 0) {
-            return alert(uploadResult.message);
+            return alert(uploadResult.result);
         }
 
         return alert('success!');

@@ -1,75 +1,82 @@
 <?php
 
-// TODO: 成功時は値を返すようにする 
-function get_api_result_sucsess($message) {
-    $code_sucsess = 0;
-    $result = [
-        "status" => $code_sucsess,
-        "message" => $message
-    ];
-    return $result;
-}
+class Utility {
+    // APIのレスポンスを取得する
+    public static function get_response($status, $result) {
+        $response = [
+            "status" => $status,
+            "result" => $result
+        ];
+        return $response;
+    } 
 
-function get_api_result_failure($message) {
-    $code_failure = -1;
-    $result = [
-        "status" => $code_failure,
-        "message" => $message
-    ];
-    return $result;
-}
-
-// sqlファイルを取得する
-function get_sql_file_content($file){
-    $path = "../sql";
-    $sql = file_get_contents($path . "/" . $file);
-    return $sql;
-}
-
-function get_select_sql_file_name($value) {
-    $file = "";
-    switch ($value) {
-        case 'article':
-            $file = "select_article_data.sql";
-            break;
-        case 'user':
-            $file = "select_user.sql";
-            break;
-        case 'article_id':
-            $file = "select_new_article_id.sql";
-            break;
-        default:
-            break;
+    // sqlファイルを取得する
+    public static function get_sql_file_content($file_name){
+        $root_dir = $_SERVER["DOCUMENT_ROOT"];
+        $sql_dir = "$root_dir/dev/blog/pub/sql";
+        $file = "$sql_dir/$file_name";
+        $sql = file_get_contents($file);
+        return $sql;
     }
-    return $file;
-}
 
-function get_insert_sql_file_name($value) {
-    $file = "";
-    switch ($value) {
-        case 'article':
-            $file = "insert_article_table.sql";
-            break;
-        case 'image':
-            $file = "insert_article_image_table.sql";
-            break;
-        case 'tag':
-            $file = "insert_article_tag_table.sql";
-            break;
-        default:
-            break;
+    // TODO: 統合する
+    // sqlファイル名を取得する
+    public static function get_select_sql_file_name($value) {
+        $file = "";
+        switch ($value) {
+            case 'article':
+                $file = "select_article_data.sql";
+                break;
+            case 'user':
+                $file = "select_user.sql";
+                break;
+            case 'article_id':
+                $file = "select_new_article_id.sql";
+                break;
+            default:
+                break;
+        }
+        return $file;
     }
-    return $file;
+
+    // TODO: 統合する
+    // sqlファイル名を取得する
+    public static function get_insert_sql_file_name($value) {
+        $file = "";
+        switch ($value) {
+            case 'article':
+                $file = "insert_article_table.sql";
+                break;
+            case 'image':
+                $file = "insert_article_image_table.sql";
+                break;
+            case 'tag':
+                $file = "insert_article_tag_table.sql";
+                break;
+            default:
+                break;
+        }
+        return $file;
+    }
+
+    // データベースの設定を取得する
+    public static function get_db_config() {
+        $config = [
+            "host" => "localhost",
+            "db" => "blog",
+            "user" => "root",
+            "pass" => "root"
+        ];
+        return $config;
+    }
+
+    // 記事画像のアップロード先を取得する
+    public static function get_upload_dir() {
+        $root_dir = $_SERVER["DOCUMENT_ROOT"];
+        $upload_dir = "$root_dir/dev/blog/pub/img/article";
+        return $upload_dir;
+    }
 }
 
-function get_db_config() {
-    $config = [
-        "host" => "localhost",
-        "db" => "blog",
-        "user" => "root",
-        "pass" => "root"
-    ];
-    return $config;
-}
 
 ?>

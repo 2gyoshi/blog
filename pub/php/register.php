@@ -1,6 +1,6 @@
 <?php
 
-require('./utility.php');
+require(dirname(__FILE__)."/utility.php");
 
 main();
 
@@ -9,7 +9,7 @@ function main() {
 
     try {
         // DBへ接続する
-		$config = get_db_config();
+		$config = Utility::get_db_config();
         $host = $config["host"];
         $db = $config["db"];
         $user = $config["user"];
@@ -23,9 +23,10 @@ function main() {
         $dbh->exec($sql);
         $dbh->commit();
 
-        echo json_encode(get_api_result_sucsess(true));
+        echo json_encode(Utility::get_response(0, true));
+
     } catch(PDOException $e) {
-        echo json_encode(get_api_result_failure($e->getMessage()));
+        echo json_encode(Utility::get_responce(-1, $e->getMessage()));
         $dbh->rollBack();
     } finally {
         // 接続を閉じる
@@ -51,8 +52,8 @@ function get_insert_sql($dbh) {
 
 // 記事IDを取得する
 function get_article_id($dbh) {
-    $file = get_select_sql_file_name("article_id");
-    $sql = get_sql_file_content($file);
+    $file = Utility::get_select_sql_file_name("article_id");
+    $sql = Utility::get_sql_file_content($file);
 
     $stmt = $dbh->query($sql);
     $id = $stmt->fetch()["article_id"];
@@ -62,8 +63,8 @@ function get_article_id($dbh) {
 
 // 記事テーブルに登録するクエリを取得する
 function get_insert_sql_article($title, $text) {
-    $file = get_insert_sql_file_name("article");
-    $sql = get_sql_file_content($file);
+    $file = Utility::get_insert_sql_file_name("article");
+    $sql = Utility::get_sql_file_content($file);
 
     $sql = str_replace("@ARTICLE_TITLE", "'" . $title . "'", $sql);
     $sql = str_replace("@ARTICLE_TEXT", "'" . $text . "'", $sql);
@@ -73,8 +74,8 @@ function get_insert_sql_article($title, $text) {
 
 // 画像テーブルに登録するクエリを取得する
 function get_insert_sql_image($id, $images) {
-    $file = get_insert_sql_file_name("image");
-    $sql = get_sql_file_content($file);
+    $file = Utility::get_insert_sql_file_name("image");
+    $sql = Utility::get_sql_file_content($file);
 
     $sql_place = [];
 
@@ -89,8 +90,8 @@ function get_insert_sql_image($id, $images) {
 
 // タグテーブルに登録するクエリを取得する
 function get_insert_sql_tag($id, $tags) {
-    $file = get_insert_sql_file_name("tag");
-    $sql = get_sql_file_content($file);
+    $file = Utility::get_insert_sql_file_name("tag");
+    $sql = Utility::get_sql_file_content($file);
 
     $sql_place = [];
 

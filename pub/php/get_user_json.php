@@ -1,24 +1,12 @@
 <?php
 
-require('./utility.php');
+require(dirname(__FILE__)."/utility.php");
+require(dirname(__FILE__)."/user.php");
 
 main();
 
 function main() {
     echo get_user_json();
-}
-
-class User {
-    public string $id = "";
-    public string $password = "";
-
-    public function setID($id) {
-        $this->id= $id;
-    }
-
-    public function setPassword($password) {
-        $this->password = $password;
-    }
 }
 
 function get_user_json() {
@@ -36,7 +24,7 @@ function get_user_json() {
             array_push($result, $user);
         }
     } catch(Exception $e) {
-        echo json_encode(get_api_result_failure($e->getMessage()));
+        echo json_encode(Utility::get_responce(-1, $e->getMessage()));
     }
 
     return json_encode($result);
@@ -48,21 +36,21 @@ function get_user_data() {
 
     try {
         // DBへ接続する
-		$config = get_db_config();
+		$config = Utility::get_db_config();
         $host = $config["host"];
         $db = $config["db"];
         $user = $config["user"];
 		$pass = $config["pass"];
         $pdo  = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
 
-        $file = get_select_sql_file_name("user");
-        $sql = get_sql_file_content($file);
+        $file = Utility::get_select_sql_file_name("user");
+        $sql = Utility::get_sql_file_content($file);
     
 		// // クエリを実行する
         $result = $pdo->query($sql);
 
     } catch(PDOException $e) {
-        echo json_encode(get_api_result_failure($e->getMessage()));
+        echo json_encode(Utility::get_responce(-1, $e->getMessage()));
     } finally {
         // 接続を閉じる
         $pdo = null;

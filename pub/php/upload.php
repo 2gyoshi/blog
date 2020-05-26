@@ -1,11 +1,17 @@
 <?php
 
-require('./utility.php');
+require(dirname(__FILE__)."/utility.php");
 
 main();
 
 function main() {
-    $upload_dir = "../img/article/";
+    $upload_dir = Utility::get_upload_dir();
+    
+    if(!isset($_FILES["files"])) {
+        echo json_encode(Utility::get_response(0, true));
+        return;
+    }
+
     foreach ($_FILES["files"]["error"] as $key => $error) {
         if ($error == UPLOAD_ERR_OK) {
             $tmp_name = $_FILES["files"]["tmp_name"][$key];
@@ -15,7 +21,9 @@ function main() {
             move_uploaded_file($tmp_name, "$upload_dir/$name");
         }
     }
-    echo json_encode(get_api_result_sucsess(true));
+    
+    echo json_encode(Utility::get_response(0, true));
+
 }
 
 ?>
