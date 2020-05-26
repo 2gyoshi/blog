@@ -206,7 +206,7 @@ class Register {
 
 window.addEventListener('DOMContentLoaded', function () {
     // TODO: 環境依存変数 ====================
-    const referrer = CONFIG.loginHTMLPath;
+    const referrer = CONFIG.root + CONFIG.loginHTMLPath;
     //====================================== 
     if(document.referrer !== referrer) location.href = referrer;
 });

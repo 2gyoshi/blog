@@ -4,10 +4,14 @@ const CONFIG =  {
     'registerAPIPath': '/dev/blog/pub/php/register.php',
     'uploadAPIPath': '/dev/blog/pub/php/upload.php',
 
-    'articleHTMLPath': '/dev/blog/pub/html/article.html',
+    'root': 'http://localhost',
+    'indexHTMLPath': '/dev/blog/pub/',
+    'blogHTMLPath': '/dev/blog/pub/blog/',
+    'workHTMLPath': '/dev/blog/pub/work/',
+    'aboutHTMLPath': '/dev/blog/pub/about/',
+    'articleHTMLPath': '/dev/blog/pub/blog/article/',
     'articleImagePath': '/dev/blog/pub/img/article/',
-    'blogHTMLPath': '/dev/blog/pub/html/blog.html',
-    'registerHTMLPath': '/dev/blog/pub/html/register.html',
-    'loginHTMLPath': 'http://localhost/dev/blog/pub/html/login.html'
+    'registerHTMLPath': '/dev/blog/pub/admin/register/',
+    'loginHTMLPath': '/dev/blog/pub/admin/'
 }
 

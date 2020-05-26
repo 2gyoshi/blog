@@ -10,7 +10,6 @@ class Blog {
         this.articleImagePath = CONFIG.articleImagePath;
         this.blogHTMLPath = CONFIG.blogHTMLPath;
         //======================================
-
     }
 
     async getArticleData() {
