@@ -12,4 +12,4 @@ LEFT JOIN article_tag_table AS at
  ON a.article_id = at.article_id
 WHERE a.is_delete <> 1
 ORDER BY
-    a.article_id;
+    a.article_id DESC;
