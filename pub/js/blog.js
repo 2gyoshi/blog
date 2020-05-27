@@ -1,4 +1,4 @@
-// 個別表示と分離するべきかどうか考える
+// TODO: 個別表示と分離するべきかどうか考える
 class Blog {
     constructor(utility) {
         this.json = null;

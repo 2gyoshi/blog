@@ -12,6 +12,8 @@ const CONFIG =  {
     'articleHTMLPath': '/dev/blog/pub/blog/article/',
     'articleImagePath': '/dev/blog/pub/img/article/',
     'registerHTMLPath': '/dev/blog/pub/admin/register/',
-    'loginHTMLPath': '/dev/blog/pub/admin/'
+    'loginHTMLPath': '/dev/blog/pub/admin/',
+    
+    'keepOutImage': '/dev/blog/pub/img/keep_out/keep_out.svg'
 }
 
