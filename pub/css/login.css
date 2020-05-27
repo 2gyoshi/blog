@@ -43,3 +43,7 @@ body {
 .login-form__btn {
   color: #9E9E9E;
 }
+
+.login-form__btn:active {
+  background-color: #FAFAFA;
+}

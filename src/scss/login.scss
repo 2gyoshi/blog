@@ -41,5 +41,10 @@ body {
 
     &__btn {
         color: #9E9E9E;
+
+        &:active {
+            background-color: #FAFAFA;
+        }
     }
+
 }
