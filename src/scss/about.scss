@@ -1,24 +1,96 @@
 html, body {
+    width: 100%;
     height: 100%;
 }
 
+body {
+    background-color: #FAFAFA;
+}
+
+// TODO: Blogと共通化したい
+
 .about-main {
     width: 100%;
-    height: calc(100% - 95px);
+    max-width: 540px;
+    padding: 24px 12px;
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
     top: 50px;
-    
+}
+
+.row {
+    margin-left: -12px;
+    margin-right: -12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col {
+    width: 100%;
+    max-width: 540px;
+    padding: 0 12px;
+}
+
+.card {
+    width: 100%;
+    margin-bottom: 24px;
+    padding: 24px;
+    border-radius: 10px;
+    border: 1px solid #EEEEEE;
+    background-color: #FFFFFF;
+    -webkit-box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+    box-shadow: 0 0.75rem 1.5rem rgba(18,38,63,.03);
+    word-wrap: break-word;
+}
+
+.card-header.about{
+    height: 154px;
+    border-radius: 10px 10px 0 0;
+    background-color: gray;
+    margin: -24px -24px 0 -24px;
+}
+
+.card-content.about {
+    width: 100%;
+    height: 300px;
+
+    .avater {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 2px solid #EEEEEE;
+        background-color: #FFFFFF;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        img{
+            width: 80%;
+        }
+    }
+
+    &__text {
+        margin-top: 0;
+        margin-bottom: 1rem;
+    }
 }
 
 
-/* 480pxから */
-@media (min-width: 480px) {
-}
-
-/* 770pxから */
+/* 768pxから */
 @media (min-width: 768px) {
+    .about-main {
+        max-width: 720px;
+    }
 }
 
 /* 1025pxから */
-@media (min-width: 1025px) {
+@media (min-width: 1000px) {
+    .about-main {
+        max-width: 960px;
+    }
 }
