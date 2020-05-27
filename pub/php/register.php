@@ -50,6 +50,7 @@ function get_insert_sql($dbh) {
 }
 
 // 記事IDを取得する
+// TODO: アクティブな記事が0件のとき取得できないバグを修正したい
 function get_article_id($dbh) {
     $file = Utility::get_select_sql_file_name("article_id");
     $sql = Utility::get_sql_file_content($file);
