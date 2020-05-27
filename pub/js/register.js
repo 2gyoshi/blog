@@ -21,9 +21,9 @@ class Tag {
     display() {
         this.target.innerHTML = '';
         this.items.forEach(e => {
-            const wrapperCssClass = 'register-tag';
-            const tagCssClass = 'register-tag__item';
-            const delCssClass = 'register-tag__delete';
+            const wrapperCssClass = 'regi-multi-tag';
+            const tagCssClass = 'regi-multi-tag__val';
+            const delCssClass = 'regi-multi-tag__btn';
 
             const wrapper = document.createElement('div');
             wrapper.classList.add(wrapperCssClass);
@@ -69,9 +69,9 @@ class Image {
         // FileListオブジェクトを利用する
         this.items.forEach(e => {
             for(let i = 0; i < e.length; i++) {
-                const wrapperCssClass = 'register-img';
-                const imgCssClass = 'register-img__item';
-                const delCssClass = 'register-img__delete';
+                const wrapperCssClass = 'regi-multi-img';
+                const imgCssClass = 'regi-multi-img__val';
+                const delCssClass = 'regi-multi-img__btn';
 
                 const wrapper = document.createElement('div');
                 wrapper.classList.add(wrapperCssClass);

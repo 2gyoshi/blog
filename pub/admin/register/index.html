@@ -10,40 +10,42 @@
     <link href="/dev/blog/pub/css/register.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="register-wrapper">
-        <form class="register-form">
-            <div class="register-title">
-                <p class="register-title__name">Title</p>
-                <input type="text" id="titleInput" class="register-title__input">
-            </div>
-            <div class="register-image">
-                <p class="register-image__name">Image</p>
-                <label for="imageInput" class="register-image__label">
-                    Select image file
-                </label>
-                <input type="file" id="imageInput"
-                    class="register-image__input" accept="image/*" multiple >
-                <div id="imgDisplay"></div>
-            </div>
-            <div class="register-text">
-                <p class="register-text__name">Text</p>
-                <textarea id="textInput" class="register-text__input"></textarea>
-            </div>
-            <div class="register-tag">
-                <p class="register-tag__name">Tag</p>
-                <input type="text" name="tag" id="tagInput" class="register-tag__input">
-                <button type="button" id="tagBtn" class="register-tag__button">
-                    Add
-                </button>
-                <div id="tagDisplay"></div>
-            </div>
-            <div class="register-btn">
-                <button type="button" id="submitBtn" class="register-btn__submit">
-                    Submit
-                </button>
-            </div>
-        </form>
-    </div>
+    <form class="register-form">
+        <p class="register-form__name">Title</p>
+        <div class="register-title">
+            <input type="text" id="titleInput" class="register-title__input">
+        </div>
+
+        <p class="register-form__name">Text</p>
+        <div class="register-text">
+            <textarea id="textInput" class="register-text__input"></textarea>
+        </div>
+        
+        <p class="register-form__name">Image</p>
+        <div class="register-image">
+            <label for="imageInput" class="register-image__label">
+                Select image file
+            </label>
+            <input type="file" id="imageInput"
+                class="register-image__input" accept="image/*" multiple >
+        </div>
+        <div id="imgDisplay" class="img-display-area"></div>
+
+        <p class="register-form__name">Tag</p>
+        <div class="register-tag">
+            <input type="text" name="tag" id="tagInput" class="register-tag__input">
+            <button type="button" id="tagBtn" class="register-tag__button">
+                Add
+            </button>
+        </div>
+        <div id="tagDisplay" class="tag-display-area"></div>
+
+        <div class="register-btn">
+            <button type="button" id="submitBtn" class="register-btn__submit">
+                Submit
+            </button>
+        </div>
+    </form>
     <script src="/dev/blog/pub/js/config.js"></script>
     <script src="/dev/blog/pub/js/utility.js"></script>
     <script src="/dev/blog/pub/js/register.js"></script>
