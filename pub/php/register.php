@@ -11,10 +11,9 @@ function main() {
         // DBへ接続する
 		$config = Utility::get_db_config();
         $host = $config["host"];
-        $db = $config["db"];
         $user = $config["user"];
 		$pass = $config["pass"];
-        $dbh  = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
+        $dbh  = new PDO($host, $user, $pass);
 
         $sql = get_insert_sql($dbh);
 

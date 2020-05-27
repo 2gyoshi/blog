@@ -62,8 +62,7 @@ class Utility {
     // データベースの設定を取得する
     public static function get_db_config() {
         $config = [
-            "host" => "localhost",
-            "db" => "blog",
+            "host" => "mysql:host=localhost; dbname=blog;",
             "user" => "root",
             "pass" => "root"
         ];

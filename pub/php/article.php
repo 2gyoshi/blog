@@ -1,12 +1,12 @@
 <?php
 
 class Article {
-	public int $id = 0;
-	public string $title = "";
-	public string $text = "";
-	public array $images = array();
-	public array $tags = array();
-	public string $time = "";
+	public $id = 0;
+	public $title = "";
+	public $text = "";
+	public $images = array();
+	public $tags = array();
+	public $time = "";
 
 	function __construct($id, $title, $text, $image, $tag, $time) {
 		$this->id = $id;

@@ -1,8 +1,8 @@
 <?php
 
 class User {
-    public string $id = "";
-    public string $password = "";
+    public $id = "";
+    public $password = "";
 
     public function setID($id) {
         $this->id= $id;

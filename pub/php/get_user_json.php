@@ -32,28 +32,27 @@ function get_user_json() {
 
 function get_user_data() {
     $result = null;
-    $pdo = null;
+    $dbh = null;
 
     try {
         // DBへ接続する
 		$config = Utility::get_db_config();
         $host = $config["host"];
-        $db = $config["db"];
         $user = $config["user"];
 		$pass = $config["pass"];
-        $pdo  = new PDO("mysql:host=$host; dbname=$db;", $user, $pass);
+        $dbh  = new PDO($host, $user, $pass);
 
         $file = Utility::get_select_sql_file_name("user");
         $sql = Utility::get_sql_file_content($file);
     
 		// // クエリを実行する
-        $result = $pdo->query($sql);
+        $result = $dbh->query($sql);
 
     } catch(PDOException $e) {
         echo json_encode(Utility::get_responce(-1, $e->getMessage()));
     } finally {
         // 接続を閉じる
-        $pdo = null;
+        $dbh = null;
     }
 
     return $result;
