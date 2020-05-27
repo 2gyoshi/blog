@@ -3,7 +3,7 @@ class Login {
         this.utility = utility;
 
         // TODO: 環境依存変数 ====================
-        this.nextPage = CONFIG.registerHTMLPath;
+        this.registerParge = CONFIG.registerHTMLPath;
         this.userDataAPIPath = CONFIG.userDataAPIPath;
         //======================================
     }
@@ -18,7 +18,8 @@ class Login {
     }
 
     correct() {
-        location.href = this.nextPage;
+        sessionStorage.setItem('loginStatus','login');
+        location.href = this.registerParge;
     }
 
     mistake() {
